@@ -17,8 +17,21 @@
 	<div ng-controller="PrimeiroController" class="well">
 		<p>Olá, {{nome}} seja bem vindo!</p>
 		<p ng-show="iniciado">Curso em Andamento!</p>
-		<p ng-hide="iniciado">Curso finalizado</p>
-		<p ng-if="|iniciado">Aguarde o próximo curso</p>
+		<p ng-hide="iniciado">Curso finalizado!</p>
+		<p ng-if="!iniciado">Aguarde o próximo curso!</p>
+		<br><br>
+		
+		<li ng-repeat="aluno in alunos">
+			{{aluno}}
+		</li>
+		<br>
+		<button ng-show="iniciado" ng-click="finalizar()" class="btn btn-danger"> 
+			Finalizar
+		</button>
+		< -- button ng-hide="iniciado" ng-click="iniciar()" class="btn btn-success" -->
+		<button ng-hide="iniciado" ng-click="iniciar()" class="btn btn-sucess"> 
+			Iniciar
+		</button>
 	</div>
 	<div class="container-fluid container-fixed-lg footer">
 		<div style="copyright sm-text-center">
