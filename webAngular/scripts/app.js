@@ -1,1 +1,1 @@
-var app = angular.module('ModeloProcessoSoftware', []);
+var app = angular.module('ModeloProcessoSoftware', ['ngResource']);
