@@ -1,0 +1,51 @@
+<div ng-controller="ListagemController" class="well">
+		<p>Olá, {{nome}} seja bem vindo!</p>
+		<br>
+		<div ng-class="{'panel panel-primary':iniciado, 'panel panel-danger':!iniciado}">
+			<div class="panel-heading">
+				<h3 class="panel-title">Situacao do Curso</h3>			
+			</div>
+			<div class="panel-body">
+				<p ng-show="iniciado">Curso em Andamento!</p>
+				<p ng-hide="iniciado">Curso finalizado!</p>
+				<p ng-if="!iniciado">Aguarde o próximo curso!</p>
+				<p>Preço do curso: {{valor | currency : 'R$ '}} </p>
+				<p>Ultima atualização curso: {{ hoje | date : 'dd/MM/yyyy' }}</p>
+			</div>
+		</div>
+		<br><br>
+		<div>
+			<label>Definir preço:</label>
+			<input type="number" id="valor" name="valor" ng-model="valor">
+		</div>
+		
+		<h3>Alunos cadastrados</h3>
+		<div>
+			<label> Filtrar por nome</label>
+			<input type="text" ng-model="filtronome">
+		</div>	
+	<br>		
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<tr> 
+					<th ng-click="ordenarPorNome()">
+						Nome
+					</th>
+					<th ng-click="ordenarPorIdade()">
+						Idade
+					</th>
+				</tr>
+				<tr ng-repeat="aluno in alunos | filter : filtronome">
+					<td> {{aluno.nome}}</td>
+					<td> {{aluno.idade}}</td>
+				</tr>
+			</table>
+		</div>
+		<br>
+		<button ng-show="iniciado" ng-click="finalizar()" class="btn btn-danger"> 
+			Finalizar
+		</button>
+		<button ng-hide="iniciado" ng-click="iniciar()" class="btn btn-success"> 
+			Iniciar
+		</button>
+</div>
