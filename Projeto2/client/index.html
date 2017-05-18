@@ -1,0 +1,39 @@
+<html> 
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv= "X-UA-Compatible" content="IE-edge">
+	<meta http-equiv= "Content-type" content="text/html; charset=UTF-8">
+	<link href ="css/bootstrap.min.css" rel="stylesheet" type= "text/css" >
+	<title>"Pagina Teste"</title>
+</head>
+<body class="contanier" ng-app="FerramentaProcesso">
+<div ng-controller="ModeloViewController" class="well">
+    Olá, {{nome}} e {{descricao}}
+    <div class="table-responsive">
+	<table class="table table-striped">
+	    <tr>
+		    <th>Nome</th>
+            <th>Codigo</th>
+            <th>Descricao</th>
+		</tr>
+		<tr ng-repeat="modelo in modelos">
+		  	<td>
+	   		{{modelo.nomeM}}
+	    	</td>
+            <td>
+            {{modelo.codM}} 
+            </td>
+            <td>
+            {{modelo.descricaoM}}
+            </td>    
+		</tr>
+	</table>
+    </div>
+</div>	
+	
+
+<script src="scripts\libs\angular.js"></script>	
+<script src="scripts\app.js"></script>
+<script src="scripts\modelo-view-controller.js"></script>
+</body>
+</html>
