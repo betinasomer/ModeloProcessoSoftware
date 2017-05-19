@@ -30,10 +30,44 @@
 	</table>
     </div>
 </div>	
+<div class="well" ng-controller="CadastroModeloController">
+		<h3>Cadastrar novo modelo</h3>
+		<form name="form_1">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="form-group form-group-default">
+						<label>Nome Modelo</label>
+						<input class="form-control" type="text" id="nome_modelo" name="nome_modelo" ng-model="nome_modelo" ng-minlength="3">					
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group form-group-default">
+						<label>Descricao do Modelo</label>
+						<input class="form-control" type="text" id="descricao_modelo" name="descricao_modelo" ng-model="descricao_modelo">					
+					</div>
+				</div>
+                <div class="col-md-4">
+					<div class="form-group form-group-default">
+						<label>Codigo do Modelo</label>
+						<input class="form-control" type="integer" id="cod_modelo" name="cod_modelo" ng-model="cod_modelo">					
+					</div>
+				</div>
+			</div >
+			<div class="row">
+				<div class="col-md-4">
+					<button ng-click="submeter()" class="btn btn-primary">Adicionar Modelo</button>
+				</div>
+			</div>
+			
+		</form>
+</div>
 	
 
 <script src="scripts\libs\angular.js"></script>	
 <script src="scripts\app.js"></script>
+
 <script src="scripts\modelo-view-controller.js"></script>
+<script src="scripts\modelo-cadastro-controller.js"></script>
+<script src="scripts\modelos-collection-service.js"></script>
 </body>
 </html>
