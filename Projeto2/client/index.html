@@ -1,0 +1,73 @@
+<html> 
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv= "X-UA-Compatible" content="IE-edge">
+	<meta http-equiv= "Content-type" content="text/html; charset=UTF-8">
+	<link href ="css/bootstrap.min.css" rel="stylesheet" type= "text/css" >
+	<title>"Pagina Teste"</title>
+</head>
+<body class="contanier" ng-app="FerramentaProcesso">
+<div ng-controller="ModeloViewController" class="well">
+    Olá, {{nome}} e {{descricao}}
+    <div class="table-responsive">
+	<table class="table table-striped">
+	    <tr>
+		    <th>Nome</th>
+            <th>Codigo</th>
+            <th>Descricao</th>
+		</tr>
+		<tr ng-repeat="modelo in modelos">
+		  	<td>
+	   		{{modelo.nomeM}}
+	    	</td>
+            <td>
+            {{modelo.codM}} 
+            </td>
+            <td>
+            {{modelo.descricaoM}}
+            </td>    
+		</tr>
+	</table>
+    </div>
+</div>	
+<div class="well" ng-controller="CadastroModeloController">
+		<h3>Cadastrar novo modelo</h3>
+		<form name="form_1">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="form-group form-group-default">
+						<label>Nome Modelo</label>
+						<input class="form-control" type="text" id="nome_modelo" name="nome_modelo" ng-model="nome_modelo" ng-minlength="3">					
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group form-group-default">
+						<label>Descricao do Modelo</label>
+						<input class="form-control" type="text" id="descricao_modelo" name="descricao_modelo" ng-model="descricao_modelo">					
+					</div>
+				</div>
+                <div class="col-md-4">
+					<div class="form-group form-group-default">
+						<label>Codigo do Modelo</label>
+						<input class="form-control" type="integer" id="cod_modelo" name="cod_modelo" ng-model="cod_modelo">					
+					</div>
+				</div>
+			</div >
+			<div class="row">
+				<div class="col-md-4">
+					<button ng-click="submeter()" class="btn btn-primary">Adicionar Modelo</button>
+				</div>
+			</div>
+			
+		</form>
+</div>
+	
+
+<script src="scripts\libs\angular.js"></script>	
+<script src="scripts\app.js"></script>
+
+<script src="scripts\modelo-view-controller.js"></script>
+<script src="scripts\modelo-cadastro-controller.js"></script>
+<script src="scripts\modelos-collection-service.js"></script>
+</body>
+</html>
