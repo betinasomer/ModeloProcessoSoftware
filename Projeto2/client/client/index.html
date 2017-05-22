@@ -1,0 +1,42 @@
+<html> 
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv= "X-UA-Compatible" content="IE-edge">
+	<meta http-equiv= "Content-type" content="text/html; charset=UTF-8">
+	<link href ="css/bootstrap.min.css" rel="stylesheet" type= "text/css" >
+	<title>"Pagina Teste"</title>
+</head>
+<body class="contanier" ng-app="FerramentaProcesso">
+    
+    <div class="header-inner">
+		<h1 style="text-align: center; color:blue;">
+		Bem Vindo ao curso de desenvolvimento WEB com Angular JS
+		</h1>
+	</div>
+
+    <div class="navbar navbar-default" ng-controller="MenuController">
+		<div class= "collapse navbar-collapse" id="menu">
+			<button ng-click="irInicio()" class="btn btn-primary">Inicio</button>
+			<button ng-click="irCadastroModelo()" class="btn btn-primary">Cadastrar</button>
+			<button ng-click="irViewModelo()" class="btn btn-primary">Modelos</button>
+				
+		</div>
+	</div>
+	<div ui-view></div>
+
+
+
+
+<script src="scripts\app.js"></script>
+<script src="scripts\libs\angular.js"></script>	
+<script src="scripts\libs\ngResource.js"></script>
+<script src="scripts\libs\angular-ui-router.js"></script>
+
+<script src="views\inicial.html"></script>
+<script src="views\modelo-view.html"></script>
+<script src="views\modelo-cadastro.html"></script>
+<script src="scripts\modelo-view-controller.js"></script>
+<script src="scripts\modelo-cadastro-controller.js"></script>
+<script src="scripts\modelos-collection-service.js"></script>
+</body>
+</html>
