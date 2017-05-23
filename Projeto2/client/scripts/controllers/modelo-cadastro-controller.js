@@ -7,6 +7,8 @@ angular.module('FerramentaProcesso').controller('CadastroModeloController', func
 		novo_modelo['codM'] = parseInt($scope.cod_modelo);
         novo_modelo['descricaoM'] = $scope.descricao_modelo;
         ModelosCollectionService.adicionarModelo(novo_modelo);
+		alert("Modelo cadastrado com sucesso!");
+
 		//$scope.modelos.push(novo_modelo);
 	} else {
 		alert("Preencha o formulário corretamente");

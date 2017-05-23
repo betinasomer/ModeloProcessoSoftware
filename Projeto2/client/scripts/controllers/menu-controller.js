@@ -9,5 +9,11 @@ angular.module('FerramentaProcesso').controller('MenuController', function($scop
 	$scope.irViewModelo=function(){
 		$state.go("aplicacao_view_modelo");
 	}
+	$scope.irCadastroNivelMaturidade=function(){
+		$state.go("aplicacao_cadastro_nivelmaturidade");
+	}
+	$scope.irViewNivelMaturidade=function(){
+		$state.go("aplicacao_view_nivelMaturidade");
+	}
 
 });
