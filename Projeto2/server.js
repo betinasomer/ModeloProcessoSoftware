@@ -1,42 +1,38 @@
-
 // npm install express --save
 var express = require('express');
 var app = express();
-
-// npm install mysql --save
-
-var mysql = require('mysql');
-
-//npm install body-parse --save
+var salvarTamplate = require('./server/controllers/salvar-tamplate-con.js');
+var caminho = __dirname + '/server/upload/temp';
+//var caminho = 'd:/';
 var bodyParser = require('body-parser');
 
-connection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "modelos"
-});
+var multer = require('multer')
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, caminho)
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname)
+    }
+})
 
-app.post('/savedata', function (pedido, resposta) {
-    bodyParser.json();
-    var json = pedido.body;
-    connection.connect(function (err) {
-        if (err) {
-            console.log('erro');
-        }
-    })
-    console.log('Conectou ao Banco de dados');
-    connection.query('insert into produtotrabalho(nome) VALUES(?)', json.nomeFile, function (err, res) {
-        if (err) {
-            console.log(err);
-            resposta.sendStatus(404);
-        } else {
-            console.log('desconetou');
-            connection.end();
-        }
-    })
-    resposta.sendStatus(200);
+var upload = multer({ storage: storage });
+
+app.post('/saveTamplate', upload.any(), function (pedido, resposta) {
+    console.log(pedido.body.nomeFile);
+    console.log(caminho)
+
+    console.log(salvarTamplate.salvarTamplateCompleto(pedido.body.nomeFile, caminho));
+
+    var insert = true;
+    if (insert) {
+        resposta.sendStatus(200);
+    } else {
+        resposta.sendStatus(404);
+    }
 })
 
 app.use(express.static(__dirname + '/client'));
