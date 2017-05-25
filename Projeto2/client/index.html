@@ -5,7 +5,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE-edge">
 	<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
 	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-	<title>"Pagina Teste"</title>
+	<link href="css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+
+	<title>"Ferramento de Modelo Processos de Software"</title>
 </head>
 
 <body class="contanier" ng-app="FerramentaProcesso">
@@ -20,8 +22,6 @@
 		<button type="button" class="btn btn-default" ng-click="irInicio()">Inicio</button>
 		<button type="button" class="btn btn-default" ng-click="irViewModelo()">Modelos</button>
 		<button type="button" class="btn btn-default" ng-click="irViewNivelMaturidade()">Nível de Maturidade</button>
-		<button type="button" class="btn btn-default" ng-click="irCadastroModelo()">Cadastrar Modelo</button>
-		<button type="button" class="btn btn-default" ng-click="irCadastroNivelMaturidade()">Cadastrar Nível de Maturidade</button>
 		<div class="btn-group">
 		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       	Cadastrar
@@ -36,6 +36,9 @@
 	<br>
 	<br>
 	<div ui-view></div>
+
+	<script src="css\jquery.min.js"></script>
+	<script src="css\bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script src="scripts\libs\angular.js"></script>
 	<script src="scripts\libs\ngResource.js"></script>
 	<script src="scripts\libs\angular-ui-router.js"></script>
