@@ -1,0 +1,11 @@
+<div class="well" ng-controller="CadastroProdutoTrabalhoController"> 
+            <h3>Produto de Trabalho</h3>
+            <br>
+            <h5>Cadastre um nome para o Produto de trabalho</h5>
+            <label> Nome: </label><br>
+            <input type="text" ng-model="nome"> <br><br>
+            <h5>Selecione um arquivo de seu computador</h5>
+            <br>
+            <input type="file" file-model="myFile" /><br><br>
+            <button ng-click="uploadFile()">Enviar</button>
+</div>

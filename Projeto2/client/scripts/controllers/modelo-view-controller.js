@@ -2,6 +2,7 @@ angular.module('FerramentaProcesso').controller('ModeloViewController',function(
     $scope.nome = 'Teste';
     $scope.descricao = 'Exemplo';
     $scope.codigo = 0;
+    $scope.sigla = 'CMMI';
     $scope.modelos = ModelosCollectionService.getModelos();
 
     

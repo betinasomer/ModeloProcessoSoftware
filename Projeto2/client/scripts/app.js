@@ -22,6 +22,10 @@ var app = angular.module('FerramentaProcesso', ['ngResource', 'ui.router'])
 				name : 'aplicacao_view_nivelMaturidade',
 				url : '/nivelMaturidade-view.html',
 				templateUrl : 'scripts/views/nivelMaturidade-view.html'
+			}).state('aplicacao_cadastro_produtoTrabalho', {
+				name : 'aplicacao_cadastro_produtoTrabalho',
+				url : '/produtoTrabalhoCadastro-view.html',
+				templateUrl : 'scripts/views/produtoTrabalho-cadastro.html'
 			})
             ;	
     });

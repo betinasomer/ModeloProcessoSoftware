@@ -24,7 +24,6 @@ var upload = multer({ storage: storage });
 app.post('/saveTamplate', upload.any(), function (pedido, resposta) {
     console.log(pedido.body.nomeFile);
     console.log(caminho)
-
     console.log(salvarTamplate.salvarTamplateCompleto(pedido.body.nomeFile, caminho));
 
     var insert = true;

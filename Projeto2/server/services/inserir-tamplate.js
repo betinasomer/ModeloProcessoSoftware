@@ -10,7 +10,7 @@ inserirTamplateBanco = function (nome) {
             console.log(err);
         }
     });
-    conexao.query('INSERT INTO produtotrabalho(nome) VALUES(?)', nome, function (err, res) {
+    conexao.query('INSERT INTO produto_trabalho(nome) VALUES(?)', nome, function (err, res) {
         db.fechaConexao(conexao);
         var id = res.insertId;
     });

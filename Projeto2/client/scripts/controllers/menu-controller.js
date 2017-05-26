@@ -15,5 +15,8 @@ angular.module('FerramentaProcesso').controller('MenuController', function($scop
 	$scope.irViewNivelMaturidade=function(){
 		$state.go("aplicacao_view_nivelMaturidade");
 	}
+	$scope.irCadastroProdutoTrabalho=function(){
+		$state.go("aplicacao_cadastro_produtoTrabalho");		
+	}
 
 });
