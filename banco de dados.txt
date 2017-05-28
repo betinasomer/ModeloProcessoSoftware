@@ -1,3 +1,8 @@
-http://mysql.talentodigital.com.br
-login: talentodigital
+mysql.braspesca.com.br
+login braspesca01
+senha xx123456
+
+ftp
+ftp.braspesca.com.br
+login braspesca
 senha xx123456
