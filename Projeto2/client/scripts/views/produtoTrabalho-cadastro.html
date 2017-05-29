@@ -1,11 +1,33 @@
 <div class="well" ng-controller="CadastroProdutoTrabalhoController"> 
             <h3>Produto de Trabalho</h3>
-            <br>
-            <h5>Cadastre um nome para o Produto de trabalho</h5>
-            <label> Nome: </label><br>
-            <input type="text" ng-model="nome"> <br><br>
-            <h5>Selecione um arquivo de seu computador</h5>
-            <br>
-            <input type="file" file-model="myFile" /><br><br>
-            <button ng-click="uploadFile()">Enviar</button>
+
+		<form name="form_1">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="form-group form-group-default">
+						<label>Cadastre um nome para o Produto de trabalho</label>
+						  <input type="text" ng-model="nome">					
+					</div>
+				</div>				
+			</div >
+			<div class="row">
+			<div class="col-md-4">
+					<div class="form-group form-group-default">
+						<label>Selecione um arquivo de seu computador</label>
+						<input type="file" file-model="myFile" /><br><br>				
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<button ng-click="uploadFile()" class="btn btn-primary">Enviar</button>
+				</div>
+			</div>
+			
+		</form>
+			
+			
+			
+			
+			
 </div>

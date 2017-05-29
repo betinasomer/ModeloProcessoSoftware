@@ -2,7 +2,7 @@
 var express = require('express');
 var app = express();
 var salvarTamplate = require('./server/controllers/salvar-tamplate-con.js');
-var caminho = __dirname + '/server/upload/temp';
+var caminho = __dirname + '/server/upload/temp/';
 //var caminho = 'd:/';
 var bodyParser = require('body-parser');
 
@@ -16,15 +16,16 @@ var storage = multer.diskStorage({
     },
     filename: function (req, file, cb) {
         cb(null, file.originalname)
+		
     }
+	
 })
 
 var upload = multer({ storage: storage });
 
 app.post('/saveTamplate', upload.any(), function (pedido, resposta) {
-    console.log(pedido.body.nomeFile);
-    console.log(caminho)
-    console.log(salvarTamplate.salvarTamplateCompleto(pedido.body.nomeFile, caminho));
+    
+    console.log(salvarTamplate.salvarTamplateCompleto(pedido.body.nomeFile, caminho+pedido.files[0].originalname));
 
     var insert = true;
     if (insert) {

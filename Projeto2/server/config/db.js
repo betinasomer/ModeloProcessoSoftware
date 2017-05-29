@@ -4,15 +4,16 @@ var mysql = require('mysql');
 
 conexao = function () {
     return mysql.createConnection({
-        host: "http://mysql.talentodigital.com.br",
-        user: "talentodigital",
-        password: "xx123456",
-        database: "talentodigital"
+        host: "localhost",
+        user: "root",
+        password: "",
+        database: "modelos"
     });
 }
 
 fechaConexao = function (conexao) {
     conexao.end();
+    conexao = null;
 }
 
 module.exports = { conexao, fechaConexao };
