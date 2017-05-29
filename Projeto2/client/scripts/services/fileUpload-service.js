@@ -1,4 +1,4 @@
-angular.module('appDeCadastros').service('fileUpload', ['$http', function ($http) {
+angular.module('FerramentaProcesso').service('fileUpload', ['$http', function ($http) {
     
     this.uploadFileToUrl = function (file, nome, uploadUrl) {
         var fd = new FormData();

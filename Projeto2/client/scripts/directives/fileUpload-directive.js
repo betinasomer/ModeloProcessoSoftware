@@ -1,4 +1,4 @@
-angular.module('appDeCadastros').directive('fileModel', ['$parse', function ($parse) {
+angular.module('FerramentaProcesso').directive('fileModel', ['$parse', function ($parse) {
     return {
         restrict: 'A',
         link: function (scope, element, attrs) {

@@ -1,4 +1,3 @@
-
 angular.module('FerramentaProcesso').controller('CadastroProdutoTrabalhoController', ['$scope', 'fileUpload', function ($scope, fileUpload) {
     $scope.uploadFile = function () {
         var file = $scope.myFile;
@@ -7,4 +6,3 @@ angular.module('FerramentaProcesso').controller('CadastroProdutoTrabalhoControll
         fileUpload.uploadFileToUrl(file, nome, uploadUrl);
     };
 }]);
-

@@ -1,19 +1,15 @@
 <div ng-controller="ModeloViewController" class="well">
-    <h2>Ferramentas de Processo de Software</h2>     
+    <h4>Ferramentas de Processo de Software</h4>     
     <div class="table-responsive">
 	<table class="table table-striped" >
 	    <tr>
 		    <th>Codigo</th>
-            <th>Sigla</th>
             <th>Nome</th>
             <th>Descricao</th>
 		</tr>
 		<tr ng-repeat="modelo in modelos">
 		  	<td>
             {{modelo.codM}} 
-            </td>
-            <td>
-            {{modelo.siglaM}}
             </td>
             <td>
 	   		{{modelo.nomeM}}

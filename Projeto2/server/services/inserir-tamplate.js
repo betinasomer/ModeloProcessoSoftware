@@ -1,26 +1,20 @@
 var db = require('../config/db.js');
 var conexao = db.conexao();
 
-inserirTamplateBanco = function (nome, lastID, caminho, fechaConexao) {
+
+inserirTamplateBanco = function (nome) {
+    
     conexao.connect(function (err) {
         if (err) {
-            console.log('erro ao iniciar '+err);
-        }
-    });    
-    conexao.query('INSERT INTO produtotrabalho(nome) VALUES(?)', nome, function (err, res) {
-        
-        if (err) {
 
-        } else {
-            db.fechaConexao(conexao);
-            lastID(res.insertId, caminho);
+            console.log(err);
         }
     });
-    
-
-    
+    conexao.query('INSERT INTO produto_trabalho(nome) VALUES(?)', nome, function (err, res) {
+        db.fechaConexao(conexao);
+        var id = res.insertId;
+    });
+    return id;
 };
 
 module.exports = { inserirTamplateBanco };
-
-
