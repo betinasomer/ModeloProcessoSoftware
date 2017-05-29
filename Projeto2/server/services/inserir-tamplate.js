@@ -11,14 +11,10 @@ inserirTamplateBanco = function (nome, lastID, caminho) {
 
         if (err) {
 
-        } else {
-            db.fechaConexao(conexao);
+        } else {            
             lastID(res.insertId, caminho);
         }
     });
-
-
-
 };
 
 module.exports = { inserirTamplateBanco };
