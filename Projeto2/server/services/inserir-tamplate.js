@@ -7,7 +7,7 @@ inserirTamplateBanco = function (nome, lastID, caminho) {
             console.log('erro ao iniciar ' + err);
         }
     });
-    conexao.query('INSERT INTO produto_trabalho(nome,id_modelo) VALUES(?,?)', [nome, 1], function (err, res) {
+    conexao.query('INSERT INTO produtotrabalho(nome,id_modelo) VALUES(?,?)', [nome, 1], function (err, res) {
 
         if (err) {
 

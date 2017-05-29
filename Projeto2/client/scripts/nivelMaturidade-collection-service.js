@@ -9,4 +9,5 @@ angular.module('FerramentaProcesso').service('NivelMaturidadeCollectionService',
     this.adicionarNivel = function(nivelMaturidade) {
         niveis.push(nivelMaturidade);
     }
+    
 });

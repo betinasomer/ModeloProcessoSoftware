@@ -12,8 +12,9 @@ conexao = function () {
 }
 
 fechaConexao = function (conexao) {
-    conexao.end();
-    conexao = null;
+    conexao.end(function (err) {
+        console.log(err);
+    })    
 }
 
 module.exports = { conexao, fechaConexao };

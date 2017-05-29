@@ -26,6 +26,10 @@ var app = angular.module('FerramentaProcesso', ['ngResource', 'ui.router'])
 				name : 'aplicacao_cadastro_produtoTrabalho',
 				url : '/produtoTrabalhoCadastro-view.html',
 				templateUrl : 'scripts/views/produtoTrabalho-cadastro.html'
+			}).state('aplicacao_cadastro_praticaEspecifica', {
+				name : 'aplicacao_cadastro_praticaEspecifica',
+				url : '/praticaEspecifica-view.html',
+				templateUrl : 'scripts/views/praticaEspecifica-view.html'
 			})
             ;	
     });

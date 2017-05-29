@@ -9,7 +9,7 @@ setID = function (id) {
 salvarEmDisco = function (caminho, id) {
     console.log("CAMINHO : "+caminho);
     console.log('esse id'+id);
-    var path_image = 'D:\\Repositorios\\ModeloProcessoSoftware\\Projeto2\\server\\upload\\' + id + '.png';
+    var path_image = 'C:\\Users\\Betina\\Downloads\\Projeto2 felipe\\' + id + '.png';
     console.log("DESTINO : " +path_image);
     fs.rename(caminho, path_image, function (err) {
          //Exclui a foto da pasta temporária.
