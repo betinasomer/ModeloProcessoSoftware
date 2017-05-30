@@ -9,13 +9,10 @@ inserirModeloBanco = function (nome, sigla, descricao) {
     });
 
     //INSERT INTO modelo (nome, sigla, descricao) VALUES 
-    let callback = function (ret) {
-        return ret;
-    }
-    return conexao.query('INSERT INTO modelo(nome, sigla, descricao) VALUES(?,?,?)', nome, sigla, descricao, function (err, res, callback) {
+    return conexao.query('INSERT INTO modelo(nome, sigla, descricao) VALUES(?,?,?)', [nome, sigla, descricao], function (err, res) {
         db.fechaConexao(conexao);
-        return callback(res.insertId)
-    })
+        return res;
+    });
 }
 
 module.exports = { inserirModeloBanco };

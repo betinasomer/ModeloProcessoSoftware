@@ -41,8 +41,8 @@ app.post('/saveTamplate', upload.any(), function (pedido, resposta) {
 })
 
 app.post('/saveModelo', upload.any(), function (pedido, resposta) {
-
-    console.log(salvarModelo.inserirModeloBanco(pedido.body.nome, pedido.body.sigla, pedido.body.descricao));
+    let response = salvarModelo.inserirModeloBanco(pedido.body.nome, pedido.body.sigla, pedido.body.descricao);
+    console.log(response);
     var insert = true;
     if (insert) {
         resposta.sendStatus(200);
