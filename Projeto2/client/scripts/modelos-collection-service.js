@@ -9,20 +9,21 @@ angular.module('FerramentaProcesso').service('ModelosCollectionService', ['$http
         modelos.push(modelo);
     }
     
-    this.insertModelo = function (sigla, nome, descricao) {
+    this.insertModelo = function (sigla, nome, descricao, uploadUrl) {
         var fd = new FormData();
         fd.append('sigla', sigla);
         fd.append('nome',nome);
         fd.append('descricao', descricao);
+
         console.log(nome);
-        $http.post(fd, {
+        $http.post(uploadUrl, fd, {
             transformRequest: angular.identity,
             headers: { 'Content-Type': undefined }
         })
             .success(function (res) {
                 alert('inserido com sucesso');
             })
-            .error(function () {
+            .error(function (res) {
                 alert('Erro ao inserir no banco o novo modelo');
             });
     }

@@ -2,7 +2,7 @@ angular.module('FerramentaProcesso').controller('CadastroProdutoTrabalhoControll
     $scope.uploadFile = function () {
         var file = $scope.myFile;
         var nome = $scope.nome;
-        var uploadUrl = "/saveTamplate";
+        var uploadUrl = "/saveTamplate"; 
         fileUpload.uploadFileToUrl(file, nome, uploadUrl);
     };
 }]);
