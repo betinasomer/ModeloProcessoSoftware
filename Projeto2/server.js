@@ -2,6 +2,7 @@
 var express = require('express');
 var app = express();
 var salvarTamplate = require('./server/controllers/salvar-tamplate-con.js');
+var praticaEspecifica = require('./server/controllers/praticaEspecifica-controller.js');
 var salvarModelo = require('./server/services/inserir-modelo.js')
 var caminho = __dirname + '/server/upload/temp/';
 var bodyParser = require('body-parser');
@@ -14,15 +15,15 @@ var storage = multer.diskStorage({
         cb(null, caminho)
     },
     filename: function (req, file, cb) {
-        cb(null, file.originalname)		
-    }	
+        cb(null, file.originalname)
+    }
 })
 
 var upload = multer({ storage: storage });
 
 
 app.post('/saveTamplate', upload.any(), function (pedido, resposta) {
-	console.log(salvarTamplate.salvarTamplateCompleto(pedido.body.nomeFile,pedido.body.idPratica caminho+pedido.files[0].originalname));
+    console.log(salvarTamplate.salvarTamplateCompleto(pedido.body.nomeFile, pedido.body.idPratica, caminho + pedido.files[0].originalname));
 
     var insert = true;
     if (insert) {
@@ -46,7 +47,8 @@ app.post('/saveModelo', upload.any(), function (pedido, resposta) {
 app.post('/getPraticaEspecifica', function (pedido, resposta) {
     praticaEspecifica.selectPratica().then(function (res) {
         resposta.send(res);
-    });
+    })
+});
 
 
 app.use(express.static(__dirname + '/client'));

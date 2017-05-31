@@ -2,9 +2,9 @@ var salvarTamplate = require('../services/inserir-tamplate.js');
 var gravarArquivo = require('../services/salvar-tamplate.js');
 var id = 0;
 
-salvarTamplateCompleto = function (nomeFile, caminho) {
+salvarTamplateCompleto = function (nomeFile, idpratica, caminho) {
     id = 0;
-    salvarTamplate.inserirTamplateBanco(nomeFile, callback, caminho);
+    salvarTamplate.inserirTamplateBanco(nomeFile, idpratica, callback, caminho);
 
 }
 

@@ -1,26 +1,28 @@
-<div ng-controller="PraticaEspeficicaController" class="well">
-    <h2>Níveis de maturidade</h2>     
+<div ng-controller="PraticaEspeficicaController" class="well" data-ng-init="selectPraticaEspecifica()">
+    
+    
+    <h2>Níveis de maturidade</h2>
     <div class="table-responsive">
-	<table class="table table-striped" >
-	    <tr>
-            <th>Meta Especifica</th>
-		    <th>Sigla</th>
-            <th>Nome</th>
-            <th>Descricao</th>
-		</tr>
-		<tr ng-repeat="nivel in niveis">
-            <td> {{nivel.meta}} </td>
-		  	<td>
-            {{nivel.siglaPratica}} 
-            </td>
-            <td>
-	   		{{nivel.nomePratica}}
-	    	</td>
-            <td>
-            {{nivel.descricaoPratica}}
-            </td>    
-		</tr>
-	</table>
-    <button ng-click="teste()" class="btn btn-primary">Enviar</button>
+        <table class="table table-striped">
+            <tr>
+                <th>Meta Especifica</th>
+                <th>Sigla</th>
+                <th>Nome</th>
+                <th>Descricao</th>
+            </tr>
+            <tr ng-repeat="nivel in niveis" id="niveis" name="niveis" ng-model="niveis" >
+                <td> {{nivel.id}} </td>
+                <td>
+                    {{nivel.sigla}}
+                </td>
+                <td>
+                    {{nivel.nome}}
+                </td>
+                <td>
+                    {{nivel.descricao}}
+                </td>
+            </tr>
+        </table>
+
     </div>
 </div>
