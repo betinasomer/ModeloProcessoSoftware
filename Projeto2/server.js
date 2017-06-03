@@ -3,7 +3,10 @@ var express = require('express');
 var app = express();
 var salvarTamplate = require('./server/controllers/salvar-tamplate-con.js');
 var praticaEspecifica = require('./server/controllers/praticaEspecifica-controller.js');
-var salvarModelo = require('./server/services/inserir-modelo.js')
+
+var modelo = require('./server/services/modelo.js');
+var categoria = require('./server/services/categoria.js');
+
 var caminho = __dirname + '/server/upload/temp/';
 var bodyParser = require('body-parser');
 var multer = require('multer');
@@ -34,22 +37,30 @@ app.post('/saveTamplate', upload.any(), function (pedido, resposta) {
 })
 
 app.post('/saveModelo', upload.any(), function (pedido, resposta) {
-    let response = salvarModelo.inserirModeloBanco(pedido.body.nome, pedido.body.sigla, pedido.body.descricao);
+    let response = modelo.inserirModeloBanco(pedido.body.nome, pedido.body.sigla, pedido.body.descricao);
     console.log(response);
-    var insert = true;
-    if (insert) {
-        resposta.sendStatus(200);
-    } else {
-        resposta.sendStatus(404);
-    }
 });
 
-app.post('/getPraticaEspecifica', function (pedido, resposta) {
+app.post('/saveCategoria', upload.any(), function(pedido, resposta){
+    let response = categoria.inserirCategoriaBanco(pedido.body.nome, pedido.body.id_modelo);
+});
+
+
+app.get('/getPraticaEspecifica', function (pedido, resposta) {
     praticaEspecifica.selectPratica().then(function (res) {
+        resposta.send(res); 
+    })
+});
+app.get('/getModelo', function (pedido, resposta) {
+    modelo.selectModelo().then(function (res) {
         resposta.send(res);
     })
 });
-
+app.get('/getCategoria', function(pedido, resposta){
+    categoria.selectCategoria().then(function(res){
+        resposta.send(res);
+    })
+})
 
 app.use(express.static(__dirname + '/client'));
 

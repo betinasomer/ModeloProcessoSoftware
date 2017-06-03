@@ -21,4 +21,11 @@ angular.module('FerramentaProcesso').controller('MenuController', function ($sco
 	$scope.irPraticaEspecifica = function () {
 		$state.go("aplicacao_cadastro_praticaEspecifica");
 	}
+
+	$scope.irViewCategoria = function () {
+		$state.go("aplicacao_view_categoria");
+	}
+	$scope.irCadastroCategoria= function () {
+		$state.go("aplicacao_cadastro_categoria");
+	}
 });

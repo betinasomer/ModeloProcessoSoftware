@@ -9,10 +9,6 @@ angular.module('FerramentaProcesso').controller('PraticaEspeficicaController', f
             $scope.$applyAsync();
         });
     }
-
     $scope.niveis = PraticaEspecificaService.getPraticaEspecifica();
-
-
-
-});
+});  
 

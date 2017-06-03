@@ -1,20 +1,13 @@
 angular.module('FerramentaProcesso').service('ModelosCollectionService', ['$http', function ($http) {
-    var modelos = [{ 'nomeM': 'CMMI', 'codM': 1, 'siglaM': 'CMMI', 'descricaoM': 'MODELO DE REFERENCIA NO PROCESSO DE SOFTWARE' }];
-
-    this.getModelos = function () {
+    var modelos= [];
+    this.getModelo = function () {
         return modelos;
     }
-
-    this.adicionarModelo = function (modelo) {
-        modelos.push(modelo);
-    }
-    
     this.insertModelo = function (sigla, nome, descricao, uploadUrl) {
         var fd = new FormData();
         fd.append('sigla', sigla);
         fd.append('nome',nome);
         fd.append('descricao', descricao);
-
         console.log(nome);
         $http.post(uploadUrl, fd, {
             transformRequest: angular.identity,
@@ -28,4 +21,26 @@ angular.module('FerramentaProcesso').service('ModelosCollectionService', ['$http
             });
     }
 
+    this.selectModelo = function (uploadUrl) {
+        console.log('service modelo Select Modelo');
+        return new Promise(function (resolve, reject) {
+            $http.get(uploadUrl, {
+                data: 'modelos',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                }
+            }).success(function (data) {
+                modelos = [];
+                for (var i = 0; i < data.length; i++) {
+                    var objModelo = {};
+                    objModelo['id'] = data[i].id
+                    objModelo['nome'] = data[i].nome;
+                    objModelo['sigla'] = data[i].sigla;
+                    objModelo['descricao'] = data[i].descricao;
+                    modelos.push(objModelo);
+                }
+                resolve();
+            });
+        })
+    }
 }]);
