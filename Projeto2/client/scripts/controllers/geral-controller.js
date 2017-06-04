@@ -32,9 +32,35 @@ app.controller('CategoriaController', function ($scope, CategoriaCollectionServi
 	$scope.categorias = CategoriaCollectionService.getCategoria();
 });
 
+app.controller('CadastroNivelCapacidadeController', function($scope, $http, NivelCapacidadeCollectionService, ModelosCollectionService){
+	$scope.selectModelo = function () {
+		ModelosCollectionService.selectModelo('/getModelo').then(function () {
+			$scope.modelos = ModelosCollectionService.getModelo();
+			$scope.$applyAsync();
+		});
+	}
+	$scope.submeterNivelCapacidade = function () {
+		if ($scope.form_nivelCapacidade.$valid) {
+			var uploadUrl = "/saveNivelCapacidade";
+			console.log('Botao submeter NivelCapacidade');
+			NivelCapacidadeCollectionService.insertNiveisCapacidade($scope.sigla, $scope.nome, $scope.descricao, $scope.modelo, uploadUrl);
+		} else {
+			alert("Preencha o formulário corretamente");
+		}
+	};
+})
 
+app.controller('NivelCapacidadeController', function ($scope, NivelCapacidadeCollectionService) {
+	$scope.selectNivelCapacidade = function () {
+		NivelCapacidadeCollectionService.selectNiveisCapacidade('/getNivelCapacidade').then(function(){
+			$scope.nivelCapacidade = NivelCapacidadeCollectionService.getNivelCapacidade();
+			console.log($scope.nivelCapacidade);
+			$scope.$applyAsync();
+		})
 
-
+	}
+	$scope.nivelCapacidade = NivelCapacidadeCollectionService.getNivelCapacidade();
+});
 
 
 

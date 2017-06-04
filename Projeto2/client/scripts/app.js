@@ -47,12 +47,18 @@ var app = angular.module('FerramentaProcesso', ['ngResource', 'ui.router'])
 				url: '/praticaEspecifica-cadastro.html',
 				templateUrl: 'scripts/views/praticaEspecifica-cadastro.html'
 			}).state('aplicacao_view_metaEspecifica', {
-				name: 'aplicacao_view_pmetaEspecifica',
+				name: 'aplicacao_view_metaEspecifica',
 				url: '/metaEspecifica-view.html',
 				templateUrl: 'scripts/views/metaEspecifica-view.html'
-			})
-
-			;
+			}).state('aplicacao_cadastro_nivelCapacidade', {
+				name: 'aplicacao_cadastro_nivelCapacidade',
+				url: '/nivelCapacidade-cadastro.html',
+				templateUrl: 'scripts/views/nivelCapacidade-cadastro.html'
+			}).state('aplicacao_view_nivelCapacidade', {
+				name: 'aplicacao_view_nivelCapacidade',
+				url: '/nivelCapacidade-view.html',
+				templateUrl: 'scripts/views/nivelCapacidade-view.html'
+			});
 	});
 
 app.run(function ($rootScope, $state) {

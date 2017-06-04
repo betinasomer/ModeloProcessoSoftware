@@ -37,4 +37,11 @@ angular.module('FerramentaProcesso').controller('MenuController', function ($sco
 	$scope.irMetaEspecifica = function(){
 		$state.go("aplicacao_view_metaEspecifica");
 	}
+	$scope.irCadastroNivelCapacidade = function(){
+		$state.go("aplicacao_cadastro_nivelCapacidade");
+	}
+	$scope.irViewNivelCapacidade = function(){
+		$state.go("aplicacao_view_nivelCapacidade");
+	}
+	
 });

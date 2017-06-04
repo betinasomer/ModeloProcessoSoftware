@@ -6,6 +6,7 @@ var praticaEspecifica = require('./server/controllers/praticaEspecifica-controll
 var modelo = require('./server/services/modelo.js');
 var categoria = require('./server/services/categoria.js');
 var nivelMaturidade = require('./server/services/nivelMaturidade.js');
+var nivelCapacidade = require('./server/services/nivelCapacidade.js');
 
 var caminho = __dirname + '/server/upload/temp/';
 var bodyParser = require('body-parser');
@@ -50,6 +51,11 @@ app.post('/saveNivelMaturidade', upload.any(), function(pedido, resposta){
     let response = nivelMaturidade.inserirNivelMaturidadeBanco(pedido.body.sigla, pedido.body.nome, pedido.body.descricao, pedido.body.id_modelo);
 })
 
+app.post('/saveNivelCapacidade', upload.any(), function(pedido, resposta){
+    console.log('Serverjs cadastro nivel Capacidade');
+    let response = nivelCapacidade.inserirNivelCapacidadeBanco(pedido.body.sigla, pedido.body.nome, pedido.body.descricao, pedido.body.id_modelo);
+})
+
 app.get('/PraticaEspecifica', function (pedido, resposta) {
     praticaEspecifica.selectPratica().then(function (res) {
         resposta.send(res);
@@ -74,6 +80,15 @@ app.get('/getNivelMaturidade', function(pedido, resposta){
         resposta.send(res);
     })
 })
+
+app.get('/getNivelCapacidade', function(pedido, resposta){
+    console.log('Server.js getnivelcapacidade');
+    nivelCapacidade.selectNivelCapacidade().then(function (res){
+        resposta.send(res);
+    })
+})
+
+
 app.get('/getProdutoTrabalho', function (pedido, resposta) {
     salvarTamplate.selectTamplate().then(function (res) {
         resposta.send(res);

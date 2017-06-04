@@ -43,6 +43,55 @@ app.service('CategoriaCollectionService', ['$http', function ($http) {
     }
 }]);
 
+app.service('NivelCapacidadeCollectionService', ['$http', function ($http) {
+    var niveisCapacidade = [];
+    this.getNivelCapacidade = function () {
+        return niveisCapacidade;
+    }
+    this.selectNiveisCapacidade = function (uploadUrl) {
+        return new Promise(function (resolve, reject) {
+            console.log(niveisCapacidade);
+            $http.get(uploadUrl, {
+                data: 'niveisCapacidade',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                }
+            }).success(function (data) {
+                niveisCapacidade = [];
+                for (var i = 0; i < data.length; i++) {
+                    var objNivel = {};
+                    objNivel['id'] = data[i].id;
+                    objNivel['id_modelo'] = data[i].id_modelo;
+                    objNivel['sigla'] = data[i].sigla;
+                    objNivel['descricao'] = data[i].descricao;
+                    objNivel['nome'] = data[i].nome;
+                    niveisCapacidade.push(objNivel);
+                }
+                resolve();
+            });
+        })
+    } 
+    this.insertNiveisCapacidade = function (sigla, nome, descricao, modelo, uploadUrl) {
+        var fd = new FormData();
+        fd.append('sigla', sigla);
+        fd.append('nome', nome);
+        fd.append('descricao', descricao);
+        fd.append('id_modelo', modelo);
+        console.log(sigla);
+        $http.post(uploadUrl, fd, {
+            transformRequest: angular.identity,
+            headers: { 'Content-Type': undefined }
+        })
+            .success(function (res) {
+                alert('Inserido com sucesso');
+            })
+            .error(function (res) {
+                alert('Erro ao inserir no banco o novo Nivel de Capacidade');
+            });
+    }
+}]);
+
+
 
 //Servicos dos produtos de trabalhos
 app.service('ProdutoTrabalhoService', ['$http', function ($http) {
