@@ -19,7 +19,7 @@ angular.module('FerramentaProcesso').controller('MenuController', function ($sco
 		$state.go("aplicacao_cadastro_produtoTrabalho");
 	}
 	$scope.irPraticaEspecifica = function () {
-		$state.go("aplicacao_cadastro_praticaEspecifica");
+		$state.go("aplicacao_view_praticaEspecifica");
 	}
 
 	$scope.irViewCategoria = function () {
@@ -27,5 +27,11 @@ angular.module('FerramentaProcesso').controller('MenuController', function ($sco
 	}
 	$scope.irCadastroCategoria= function () {
 		$state.go("aplicacao_cadastro_categoria");
+	}
+	$scope.irViewProdutoTrabalho = function(){
+		$state.go("aplicacao_view_produtoTrabalho");
+	}
+	$scope.irCadatroPraticaEspecifica = function(){
+		$state.go("aplicacao_cadastro_praticaEspecifica");
 	}
 });

@@ -1,7 +1,7 @@
 <div ng-controller="PraticaEspeficicaController" class="well" data-ng-init="selectPraticaEspecifica()">
     
     
-    <h2>Níveis de maturidade</h2>
+    <h2>Pratice Especifica View</h2>
     <div class="table-responsive">
         <table class="table table-striped">
             <tr>
@@ -10,16 +10,16 @@
                 <th>Nome</th>
                 <th>Descricao</th>
             </tr>
-            <tr ng-repeat="nivel in niveis" id="niveis" name="niveis" ng-model="niveis" >
-                <td> {{nivel.id}} </td>
+            <tr ng-repeat="praticaEspecifica in praticaEspecificas" id="praticaEspecifica" name="praticaEspecifica" ng-model="praticaEspecifica" >
+                <td> {{praticaEspecifica.id}} </td>
                 <td>
-                    {{nivel.sigla}}
+                    {{praticaEspecifica.sigla}}
                 </td>
                 <td>
-                    {{nivel.nome}}
+                    {{praticaEspecifica.nome}}
                 </td>
                 <td>
-                    {{nivel.descricao}}
+                    {{praticaEspecifica.descricao}}
                 </td>
             </tr>
         </table>

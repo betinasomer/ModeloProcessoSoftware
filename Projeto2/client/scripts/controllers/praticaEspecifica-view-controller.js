@@ -5,12 +5,13 @@ angular.module('FerramentaProcesso').controller('PraticaEspeficicaController', f
 
     $scope.selectPraticaEspecifica = function () {
         PraticaEspecificaService.selectPraticaEspecifica('/PraticaEspecifica').then(function () {
-            $scope.niveis = PraticaEspecificaService.getPraticaEspecifica();
+            $scope.praticaEspecificas = PraticaEspecificaService.getPraticaEspecifica();
+            console.log($scope.niveis)
             $scope.$applyAsync();
         });
     }
 
-    $scope.niveis = PraticaEspecificaService.getPraticaEspecifica();
+    $scope.praticaEspecificas = PraticaEspecificaService.getPraticaEspecifica();
 
 
 

@@ -30,10 +30,10 @@
          </select>
 			</div>
 			<div class="col-md-4">
-				<label>Definir Modelo</label>
-				<select name="singleSelect" id="singleSelect" ng-model="singleSelect">
-      			<option ng-repeat="nivel in niveis" value="{{nivel.id}}">{{nivel.sigla}}</option>
-         </select>
+				<label>Modelo: </label>
+				<select name="singleSelect" id="singleSelect" ng-model="SelectModelo">
+						<option ng-repeat="modelo in modelos" value="{{modelo.id}}">{{modelo.sigla}}</option>
+   	 				</select>
 			</div>
 		</div>
 		<div class="row">

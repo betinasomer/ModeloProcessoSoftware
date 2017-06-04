@@ -17,11 +17,12 @@ angular.module('FerramentaProcesso').service('PraticaEspecificaService', ['$http
                     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
                 }
             }).success(function (data) {
+                console.log(data);
                 praticaEspecifica = [];
                 for (var i = 0; i < data.length; i++) {
                     var objPratica = {};
                     objPratica['id'] = data[i].id
-                    objPratica['descricao'] = data[i].descricao_pratica;
+                    objPratica['descricao'] = data[i].descricao;
                     objPratica['id_modelo'] = data[i].id_modelo;
                     objPratica['id_produtotrabalho'] = data[i].id_produtotrabalho;
                     objPratica['nome'] = data[i].nome;
