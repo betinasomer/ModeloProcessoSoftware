@@ -34,4 +34,7 @@ angular.module('FerramentaProcesso').controller('MenuController', function ($sco
 	$scope.irCadatroPraticaEspecifica = function(){
 		$state.go("aplicacao_cadastro_praticaEspecifica");
 	}
+	$scope.irMetaEspecifica = function(){
+		$state.go("aplicacao_view_metaEspecifica");
+	}
 });

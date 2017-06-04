@@ -45,6 +45,16 @@ app.controller('CategoriaController', function ($scope, CategoriaCollectionServi
 
 
 
+
+
+//Controller de vizualização do Produto Trabalho
+app.controller('metaEspecificaViewController', ['$scope', function ($scope ) {
+	
+}]);
+
+
+
+
 //Controle vizualizações do Produto Trabalho
 
 app.controller('ProdutoTrabalhoController', ['$scope', 'fileUpload', 'ProdutoTrabalhoService', 'ModelosCollectionService', function ($scope, fileUpload, ProdutoTrabalhoService, ModelosCollectionService) {

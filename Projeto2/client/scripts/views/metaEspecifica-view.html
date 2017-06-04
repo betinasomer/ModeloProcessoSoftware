@@ -1,0 +1,27 @@
+<div ng-controller="metaEspecificaViewController" class="well">
+    <h2>Meta Especifica</h2>     
+    <div class="table-responsive">
+	<table class="table table-striped" >
+	    <tr>
+            <th>Nome</th>
+		    <th>Sigla</th>
+            <th></th>
+            <th>Descricao</th>
+            <th>Modelo</th>
+            <th>Pratica Especifica</th>
+		</tr>
+		<tr ng-repeat="nivel in niveis">
+            <td> {{nivel.modelo}} </td>
+		  	<td>
+            {{nivel.siglaN}} 
+            </td>
+            <td>
+	   		{{nivel.nomeN}}
+	    	</td>
+            <td>
+            {{nivel.descricaoN}}
+            </td>    
+		</tr>
+	</table>
+    </div>
+</div>
