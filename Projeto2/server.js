@@ -2,12 +2,14 @@ var express = require('express');
 var app = express();
 var salvarTamplate = require('./server/controllers/salvar-tamplate-con.js');
 var praticaEspecifica = require('./server/controllers/praticaEspecifica-controller.js');
-var salvarModelo = require('./server/services/inserir-modelo.js')
+
 var modelo = require('./server/services/modelo.js');
 var categoria = require('./server/services/categoria.js');
+var nivelMaturidade = require('./server/services/nivelMaturidade.js');
+
 var caminho = __dirname + '/server/upload/temp/';
 var bodyParser = require('body-parser');
-var multer = require('multer');
+var multer = require('multer'); 
 var http = require("http");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -37,12 +39,16 @@ app.post('/saveTamplate', upload.any(), function (pedido, resposta) {
 
 app.post('/saveModelo', upload.any(), function (pedido, resposta) {
     let response = modelo.inserirModeloBanco(pedido.body.nome, pedido.body.sigla, pedido.body.descricao);
-    console.log(response);
 });
 
 app.post('/saveCategoria', upload.any(), function (pedido, resposta) {
     let response = categoria.inserirCategoriaBanco(pedido.body.nome, pedido.body.id_modelo);
 });
+
+app.post('/saveNivelMaturidade', upload.any(), function(pedido, resposta){
+    console.log('Server.js nivel de maturidade /saveNivelMaturidade');
+    let response = nivelMaturidade.inserirNivelMaturidadeBanco(pedido.body.sigla, pedido.body.nome, pedido.body.descricao, pedido.body.id_modelo);
+})
 
 app.get('/PraticaEspecifica', function (pedido, resposta) {
     praticaEspecifica.selectPratica().then(function (res) {
@@ -61,7 +67,13 @@ app.get('/getCategoria', function (pedido, resposta) {
         resposta.send(res);
     })
 })
+app.get('/getNivelMaturidade', function(pedido, resposta){
+    console.log('serve.js nivel maturidade get')
 
+    nivelMaturidade.selectNivelMaturidade().then(function (res){
+        resposta.send(res);
+    })
+})
 app.get('/getProdutoTrabalho', function (pedido, resposta) {
     salvarTamplate.selectTamplate().then(function (res) {
         resposta.send(res);

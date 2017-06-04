@@ -16,7 +16,7 @@ app.service('CategoriaCollectionService', ['$http', function ($http) {
                 categorias = [];
                 for (var i = 0; i < data.length; i++) {
                     var objCategoria = {};
-                    objCategoria['id'] = data[i].id
+                    objCategoria['id'] = data[i].id;
                     objCategoria['id_modelo'] = data[i].id_modelo;
                     objCategoria['nome'] = data[i].nome;
                     categorias.push(objCategoria);
@@ -44,7 +44,7 @@ app.service('CategoriaCollectionService', ['$http', function ($http) {
 }]);
 
 
-//Servicõs dos produtos de trabalhos
+//Servicos dos produtos de trabalhos
 app.service('ProdutoTrabalhoService', ['$http', function ($http) {
 
     produtoTrabalho = [];
