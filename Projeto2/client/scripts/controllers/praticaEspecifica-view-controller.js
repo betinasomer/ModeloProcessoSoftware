@@ -4,11 +4,15 @@ angular.module('FerramentaProcesso').controller('PraticaEspeficicaController', f
     $scope.sigla = '1';
 
     $scope.selectPraticaEspecifica = function () {
-        PraticaEspecificaService.selectPraticaEspecifica('/getPraticaEspecifica').then(function () {
+        PraticaEspecificaService.selectPraticaEspecifica('/PraticaEspecifica').then(function () {
             $scope.niveis = PraticaEspecificaService.getPraticaEspecifica();
             $scope.$applyAsync();
         });
     }
+
     $scope.niveis = PraticaEspecificaService.getPraticaEspecifica();
-});  
+
+
+
+});
 

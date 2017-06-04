@@ -1,0 +1,18 @@
+<div ng-controller="ProdutoTrabalhoController" class="well" data-ng-init="selectProdutoTrabalho()">
+    <h2>ProdutoTrabalho</h2>     
+    <div class="table-responsive">
+	<table class="table table-striped" >
+	    <tr>
+            <th>Modelo de Maturidade</th>
+            <th>Nome</th>
+		</tr>
+		<tr ng-repeat="prodTRabalho in prodTRabalhos">
+            <td> {{prodTRabalho.id_modelo}} </td>
+		  	<td>
+            {{prodTRabalho.nome}} 
+            </td>
+
+		</tr>
+	</table>
+    </div>
+</div>
