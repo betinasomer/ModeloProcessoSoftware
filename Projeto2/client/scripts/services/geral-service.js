@@ -24,10 +24,10 @@ app.service('CategoriaCollectionService', ['$http', function ($http) {
                 resolve();
             });
         })
-    } 
+    }
     this.insertCategoria = function (nome, modelo, uploadUrl) {
         var fd = new FormData();
-        fd.append('nome',nome);
+        fd.append('nome', nome);
         fd.append('id_modelo', modelo);
         console.log(nome);
         $http.post(uploadUrl, fd, {
@@ -70,7 +70,7 @@ app.service('NivelCapacidadeCollectionService', ['$http', function ($http) {
                 resolve();
             });
         })
-    } 
+    }
     this.insertNiveisCapacidade = function (sigla, nome, descricao, modelo, uploadUrl) {
         var fd = new FormData();
         fd.append('sigla', sigla);
@@ -90,9 +90,6 @@ app.service('NivelCapacidadeCollectionService', ['$http', function ($http) {
             });
     }
 }]);
-
-
-
 //Servicos dos produtos de trabalhos
 app.service('ProdutoTrabalhoService', ['$http', function ($http) {
 
@@ -126,9 +123,97 @@ app.service('ProdutoTrabalhoService', ['$http', function ($http) {
             });
         })
     }
+}]);
+
+//Serviço da meta Generica
+app.service('metaGenericaService', ['$http', function ($http) {
+    metaGenerica = [];
+
+    this.getMetaGenerica = function () {
+        return metaGenerica;
+    }
+
+    this.selectMetaGenerica = function (uploadUrl) {
+        return new Promise(function (resolve, reject) {
+            $http.get(uploadUrl, {
+                data: 'metaEspecifica',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                }
+            }).success(function (data) {
+                console.log(data)
+                metaGenerica = [];
+                for (var i = 0; i < data.length; i++) {
+                    var objMetaGenerica = {};
+                    objMetaGenerica['descricao'] = data[i].descricao;
+                    objMetaGenerica['id'] = data[i].id;
+                    objMetaGenerica['id_modelo'] = data[i].id_modelo;
+                    objMetaGenerica['id_nivelcapacidade'] = data[i].id_nivelcapacidade;
+                    objMetaGenerica['nome'] = data[i].nome;
+                    objMetaGenerica['sigla'] = data[i].sigla;
+
+                    metaGenerica.push(objMetaGenerica);
+                }
+                resolve();
+            })
+        })
+    }
+
+}]);
 
 
-  
+//Serviço da meta especifica
+
+app.service('MetaEspecificaService', ['$http', function ($http) {
+    metaEspecifica = [];
+
+    this.getMetaEspecifica = function () {
+        return metaEspecifica;
+    }
+
+    this.selectMetaEspecifica = function (uploadUrl) {
+        return new Promise(function (resolve, reject) {
+            $http.get(uploadUrl, {
+                data: 'MetaEspecifica',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                }
+            }).success(function (data) {
+                metaEspecifica = [];
+                for (var i = 0; i < data.length; i++) {
+                    var objMetaEspecifica = {};
+                    objMetaEspecifica['descricao'] = data[i].descricao;
+                    objMetaEspecifica['id'] = data[i].id;
+                    objMetaEspecifica['id_modelo'] = data[i].id_modelo;
+                    objMetaEspecifica['id_praticaespecifica'] = data[i].id_praticaespecifica;
+                    objMetaEspecifica['nome'] = data[i].nome;
+                    objMetaEspecifica['sigla'] = data[i].sigla;
+
+                    metaEspecifica.push(objMetaEspecifica);
+                }
+
+                resolve();
+            })
+        })
+    }
+
+
+
+
+    this.insertMetaEspecifica = function (meta, uploadUrl) {
+        return new Promise(function (resolve, reject) {
+            $http.post(uploadUrl, {
+                data: meta,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                }
+            }).success(function (data) {
+                resolve();
+            })
+
+
+        })
+    }
 
 
 }]);
