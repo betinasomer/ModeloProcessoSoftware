@@ -2,8 +2,9 @@ var express = require('express');
 var app = express();
 var salvarTamplate = require('./server/controllers/salvar-tamplate-con.js');
 var praticaEspecifica = require('./server/controllers/praticaEspecifica-controller.js');
-
+var metaEspecifica = require('./server/controllers/metaEspecifica-controller.js');
 var modelo = require('./server/services/modelo.js');
+var metaGenerica = require('./server/controllers/metaGenerica-controller.js');
 var categoria = require('./server/services/categoria.js');
 var nivelMaturidade = require('./server/services/nivelMaturidade.js');
 var nivelCapacidade = require('./server/services/nivelCapacidade.js');
@@ -88,7 +89,6 @@ app.get('/getNivelCapacidade', function(pedido, resposta){
     })
 })
 
-
 app.get('/getProdutoTrabalho', function (pedido, resposta) {
     salvarTamplate.selectTamplate().then(function (res) {
         resposta.send(res);
@@ -100,11 +100,25 @@ app.post('/PraticaEspecifica', function (pedido, resposta) {
     praticaEspecifica.insertPratica(pedido.body.data).then(function () {
         resposta.sendStatus(200);
     })
-
-
 })
 
+app.get('/metaEspecifica', function (pedido, resposta) {
+    metaEspecifica.selectMetaEspecifica().then(function (data) {
+        resposta.send(data);
+    })
+})
 
+app.post('/metaEspecifica', function (pedido, resposta) {
+    metaEspecifica.insertMeta(pedido.body.data).then(function () {
+        resposta.sendStatus(200);
+    })
+})
+
+app.get('/metaGenerica', function (pedido, resposta) {
+    metaGenerica.selectMetaGenerica().then(function (data) {
+        resposta.send(data);
+    })
+})
 
 
 
