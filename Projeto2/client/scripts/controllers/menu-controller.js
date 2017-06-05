@@ -25,23 +25,28 @@ angular.module('FerramentaProcesso').controller('MenuController', function ($sco
 	$scope.irViewCategoria = function () {
 		$state.go("aplicacao_view_categoria");
 	}
-	$scope.irCadastroCategoria= function () {
+	$scope.irCadastroCategoria = function () {
 		$state.go("aplicacao_cadastro_categoria");
 	}
-	$scope.irViewProdutoTrabalho = function(){
+	$scope.irViewProdutoTrabalho = function () {
 		$state.go("aplicacao_view_produtoTrabalho");
 	}
-	$scope.irCadatroPraticaEspecifica = function(){
+	$scope.irCadatroPraticaEspecifica = function () {
 		$state.go("aplicacao_cadastro_praticaEspecifica");
 	}
-	$scope.irMetaEspecifica = function(){
+	$scope.irMetaEspecifica = function () {
 		$state.go("aplicacao_view_metaEspecifica");
 	}
-	$scope.irCadastroNivelCapacidade = function(){
+	$scope.irCadastroNivelCapacidade = function () {
 		$state.go("aplicacao_cadastro_nivelCapacidade");
 	}
-	$scope.irViewNivelCapacidade = function(){
+	$scope.irViewNivelCapacidade = function () {
 		$state.go("aplicacao_view_nivelCapacidade");
 	}
-	
+	$scope.irCadastroMetaEspecifica = function () {
+		$state.go("aplicacao_cadastro_metaEspecifica");
+	}
+	$scope.irMetaGenerica = function () {
+		$state.go("aplicacao_view_metaGenerica");
+	}
 });
