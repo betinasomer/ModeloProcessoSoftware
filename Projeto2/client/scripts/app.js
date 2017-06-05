@@ -58,6 +58,14 @@ var app = angular.module('FerramentaProcesso', ['ngResource', 'ui.router'])
 				name: 'aplicacao_view_nivelCapacidade',
 				url: '/nivelCapacidade-view.html',
 				templateUrl: 'scripts/views/nivelCapacidade-view.html'
+			}).state('aplicacao_cadastro_metaEspecifica', {
+				name: 'aplicacao_cadastro_metaEspecifica',
+				url: '/metaEspecifica-Cadastro.html',
+				templateUrl: 'scripts/views/metaEspecifica-cadastro.html'
+			}).state('aplicacao_view_metaGenerica',{
+				name: 'aplicacao_view_metaGenerica',
+				url: 'metaGenerica-view.html',
+				templateUrl: 'scripts/views/metaGenerica-view.html'
 			});
 	});
 
