@@ -49,4 +49,8 @@ angular.module('FerramentaProcesso').controller('MenuController', function ($sco
 	$scope.irMetaGenerica = function () {
 		$state.go("aplicacao_view_metaGenerica");
 	}
+	$scope.irCadatroMetaGenerica = function(){
+		alert('oi')
+		$state.go("aplicacao_cadastro_metaGenerica")
+	}
 });

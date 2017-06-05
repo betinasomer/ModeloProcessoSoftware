@@ -1,0 +1,45 @@
+<div class="well" ng-controller="teta" data-ng-init="">
+	<h3>Cadastro Meta Generica </h3>
+	<form name="form_2">
+		<div class="row">
+			<div class="col-md-3">
+				<div class="form-group form-group-default">
+					<label>Sigla Meta Generica</label>
+					<input class="form-control" type="text" id="sigla_meta" name="sigla_meta" ng-model="sigla_meta">
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group form-group-default">
+					<label>Nome Meta Generica</label>
+					<input class="form-control" type="text" id="nome_meta" name="nome_meta" ng-model="nome_meta">
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group form-group-default">
+					<label>Descricao do Meta Generica</label>
+					<input class="form-control" type="text" id="descricao_meta" name="descricao_meta" ng-model="descricao_meta">
+				</div>
+			</div>
+
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<label>Definir Nivel de capacidade</label>
+				<select name="singleSelect" id="singleSelect" ng-model="selectNivelDeCapacidade">
+      			<option ng-repeat="NivelDeCapacidade in NivelDeCapacidades" value="{{NivelDeCapacidade.id}}">{{NivelDeCapacidade.nome}}</option>
+         </select>
+			</div>
+			<div class="col-md-4">
+				<label>Modelo: </label>
+				<select name="singleSelect" id="singleSelect" ng-model="SelectModelo">
+						<option ng-repeat="modelo in modelos" value="{{modelo.id}}">{{modelo.sigla}}</option>
+   	 				</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<button ng-click="addMetaGenerica()" class="btn btn-primary">Adicionar meta</button>
+			</div>
+		</div>
+	</form>
+</div>

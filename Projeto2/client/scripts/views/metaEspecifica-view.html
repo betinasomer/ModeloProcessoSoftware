@@ -1,26 +1,29 @@
-<div ng-controller="metaEspecificaViewController" class="well">
+<div ng-controller="metaEspecificaViewController" class="well" data-ng-init="selectMetaEspecifica()">
     <h2>Meta Especifica</h2>     
     <div class="table-responsive">
 	<table class="table table-striped" >
 	    <tr>
             <th>Nome</th>
 		    <th>Sigla</th>
-            <th></th>
             <th>Descricao</th>
+            
             <th>Modelo</th>
             <th>Pratica Especifica</th>
 		</tr>
-		<tr ng-repeat="nivel in niveis">
-            <td> {{nivel.modelo}} </td>
+		<tr ng-repeat="meta in metas">
+            <td> {{meta.nome}} </td>
 		  	<td>
-            {{nivel.siglaN}} 
+            {{meta.sigla}} 
             </td>
             <td>
-	   		{{nivel.nomeN}}
+	   		{{meta.descricao}}
 	    	</td>
             <td>
-            {{nivel.descricaoN}}
-            </td>    
+            {{meta.id_modelo}}
+            </td>  
+            <td>
+            {{meta.id_praticaespecifica}}
+            </td>     
 		</tr>
 	</table>
     </div>

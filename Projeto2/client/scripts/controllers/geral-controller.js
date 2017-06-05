@@ -73,6 +73,10 @@ app.controller('metaEspecificaViewController', ['$scope', 'MetaEspecificaService
 	};
 }]);
 
+
+
+
+
 //controller da vizualização da meta generica
 app.controller('metaGenericaViewController', ['$scope', 'metaGenericaService', function ($scope, metaGenericaService) {
 	$scope.selectMetaGenerica = function () {

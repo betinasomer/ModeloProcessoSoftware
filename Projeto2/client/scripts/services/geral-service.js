@@ -179,6 +179,7 @@ app.service('MetaEspecificaService', ['$http', function ($http) {
                     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
                 }
             }).success(function (data) {
+                console.log('meta especifica' + data)
                 metaEspecifica = [];
                 for (var i = 0; i < data.length; i++) {
                     var objMetaEspecifica = {};
