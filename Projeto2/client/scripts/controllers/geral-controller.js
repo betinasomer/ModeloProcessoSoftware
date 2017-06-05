@@ -32,7 +32,7 @@ app.controller('CategoriaController', function ($scope, CategoriaCollectionServi
 	$scope.categorias = CategoriaCollectionService.getCategoria();
 });
 
-app.controller('CadastroNivelCapacidadeController', function($scope, $http, NivelCapacidadeCollectionService, ModelosCollectionService){
+app.controller('CadastroNivelCapacidadeController', function ($scope, $http, NivelCapacidadeCollectionService, ModelosCollectionService) {
 	$scope.selectModelo = function () {
 		ModelosCollectionService.selectModelo('/getModelo').then(function () {
 			$scope.modelos = ModelosCollectionService.getModelo();
@@ -52,7 +52,7 @@ app.controller('CadastroNivelCapacidadeController', function($scope, $http, Nive
 
 app.controller('NivelCapacidadeController', function ($scope, NivelCapacidadeCollectionService) {
 	$scope.selectNivelCapacidade = function () {
-		NivelCapacidadeCollectionService.selectNiveisCapacidade('/getNivelCapacidade').then(function(){
+		NivelCapacidadeCollectionService.selectNiveisCapacidade('/getNivelCapacidade').then(function () {
 			$scope.nivelCapacidade = NivelCapacidadeCollectionService.getNivelCapacidade();
 			console.log($scope.nivelCapacidade);
 			$scope.$applyAsync();
@@ -62,27 +62,70 @@ app.controller('NivelCapacidadeController', function ($scope, NivelCapacidadeCol
 	$scope.nivelCapacidade = NivelCapacidadeCollectionService.getNivelCapacidade();
 });
 
+//Controller de vizualização do Meta Especifica
+app.controller('metaEspecificaViewController', ['$scope', 'MetaEspecificaService', function ($scope, MetaEspecificaService) {
 
-
-
-
-
-
-
-
-
-
-
-//Controller de vizualização do Produto Trabalho
-app.controller('metaEspecificaViewController', ['$scope', function ($scope ) {
-	
+	$scope.selectMetaEspecifica = function () {
+		MetaEspecificaService.selectMetaEspecifica('/metaEspecifica').then(function (data) {
+			$scope.metas = MetaEspecificaService.getMetaEspecifica();
+			$scope.$applyAsync();
+		})
+	};
 }]);
 
+//controller da vizualização da meta generica
+app.controller('metaGenericaViewController', ['$scope', 'metaGenericaService', function ($scope, metaGenericaService) {
+	$scope.selectMetaGenerica = function () {
+		metaGenericaService.selectMetaGenerica('/metaGenerica').then(function (data) {
+			$scope.metas = metaGenericaService.getMetaGenerica();
+			$scope.$applyAsync();
+		})
+	}
+}]);
+
+//controller do cadastro da meta Especifica
+app.controller('CadastrometaEspecifica', function ($scope, MetaEspecificaService, PraticaEspecificaService, ModelosCollectionService) {
+
+	$scope.iniciarController = function () {
+		PraticaEspecificaService.selectPraticaEspecifica('/PraticaEspecifica').then(function () {
+			$scope.init().then(function () {
+				$scope.praticaEspecificas = PraticaEspecificaService.getPraticaEspecifica();
+				$scope.$applyAsync();
+			})
+		})
+	}
+
+	$scope.init = function () {
+		return new Promise(function (resolve, reject) {
+			ModelosCollectionService.selectModelo('/getModelo').then(function () {
+				$scope.modelos = ModelosCollectionService.getModelo();
+				resolve();
+			})
+		})
+	}
 
 
+	$scope.addmetaEspecifica = function () {
+		if ($scope.form_2.$valid) {
+			nova_meta = {};
+			nova_meta['sigla'] = $scope.sigla_meta;
+			nova_meta['nome'] = $scope.nome_meta;
+			nova_meta['descricao'] = $scope.descricao_meta;
+			nova_meta['id_pratica'] = $scope.selectPraticaEspecifica;
+			console.log($scope.selectPraticaEspecifica)
+			nova_meta['id_modelo'] = $scope.SelectModelo;
+			MetaEspecificaService.insertMetaEspecifica(nova_meta, '/metaEspecifica').then(function () {
+				alert("meta Especifica Cadastrado Com Sucesso!");
+			})
+
+		} else {
+			alert("Preencha o formulário corretamente");
+		}
+	};
+
+});
 
 //Controle vizualizações do Produto Trabalho
-
 app.controller('ProdutoTrabalhoController', ['$scope', 'fileUpload', 'ProdutoTrabalhoService', 'ModelosCollectionService', function ($scope, fileUpload, ProdutoTrabalhoService, ModelosCollectionService) {
 
 	var modelo;
@@ -130,4 +173,3 @@ app.controller('ProdutoTrabalhoController', ['$scope', 'fileUpload', 'ProdutoTra
 	}
 
 }]);
-
