@@ -70,6 +70,14 @@ var app = angular.module('FerramentaProcesso', ['ngResource', 'ui.router'])
 				name: 'aplicacao_cadastro_metaGenerica',
 				url: 'metaGenerica-cadastro.html',
 				templateUrl: 'scripts/views/metaGenerica-cadastro.html'
+			}).state('aplicacao_cadastro_areaProcesso',{
+				name: 'aplicacao_cadastro_areaProcesso',
+				url: 'area-processo-cadastro.html',
+				templateUrl: 'scripts/views/area-processo-cadastro.html'
+			}).state('aplicacao_view_areaProcesso',{
+				name: 'aplicacao_view_areaProcesso',
+				url: 'area-processo-view.html',
+				templateUrl: 'scripts/views/area-processo-view.html'
 			});
 	});
 

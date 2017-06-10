@@ -51,6 +51,7 @@ app.controller('CadastroNivelCapacidadeController', function ($scope, $http, Niv
 })
 
 app.controller('NivelCapacidadeController', function ($scope, NivelCapacidadeCollectionService) {
+
 	$scope.selectNivelCapacidade = function () {
 		NivelCapacidadeCollectionService.selectNiveisCapacidade('/getNivelCapacidade').then(function () {
 			$scope.nivelCapacidade = NivelCapacidadeCollectionService.getNivelCapacidade();
@@ -79,13 +80,16 @@ app.controller('metaEspecificaViewController', ['$scope', 'MetaEspecificaService
 
 //controller da vizualização da meta generica
 app.controller('metaGenericaViewController', ['$scope', 'metaGenericaService', function ($scope, metaGenericaService) {
+
 	$scope.selectMetaGenerica = function () {
 		metaGenericaService.selectMetaGenerica('/metaGenerica').then(function (data) {
 			$scope.metas = metaGenericaService.getMetaGenerica();
 			$scope.$applyAsync();
 		})
 	}
+
 }]);
+
 
 //controller do cadastro da meta Especifica
 app.controller('CadastrometaEspecifica', function ($scope, MetaEspecificaService, PraticaEspecificaService, ModelosCollectionService) {
@@ -107,8 +111,6 @@ app.controller('CadastrometaEspecifica', function ($scope, MetaEspecificaService
 			})
 		})
 	}
-
-
 	$scope.addmetaEspecifica = function () {
 		if ($scope.form_2.$valid) {
 			nova_meta = {};
@@ -177,3 +179,132 @@ app.controller('ProdutoTrabalhoController', ['$scope', 'fileUpload', 'ProdutoTra
 	}
 
 }]);
+
+app.controller('CadastroMetaGenerica', function ($scope, NivelCapacidadeCollectionService, ModelosCollectionService, metaGenericaService) {
+
+	$scope.init = function () {
+		NivelCapacidadeCollectionService.selectNiveisCapacidade('/getNivelCapacidade').then(function () {
+			$scope.acharModelo().then(function () {
+				$scope.NivelDeCapacidades = NivelCapacidadeCollectionService.getNivelCapacidade();
+				$scope.$applyAsync();
+			})
+
+
+		})
+	}
+	$scope.acharModelo = function () {
+		return new Promise(function (resolve, reject) {
+			ModelosCollectionService.selectModelo('/getModelo').then(function () {
+				$scope.modelos = ModelosCollectionService.getModelo();
+				resolve();
+			})
+		})
+	}
+
+	$scope.addMetaGenerica = function () {
+		if ($scope.form_2.$valid) {
+			nova_meta = {};
+			nova_meta['sigla'] = $scope.sigla_meta;
+			nova_meta['nome'] = $scope.nome_meta;
+			nova_meta['descricao'] = $scope.descricao_meta;
+
+			nova_meta['id_nivelcapacidade'] = $scope.selectNivelDeCapacidade;
+			nova_meta['id_modelo'] = $scope.SelectModelo;
+
+			metaGenericaService.insertMegaGenerica(nova_meta, '/meteGenerica').then(function () {
+				alert("meta Generica Cadastrado Com Sucesso!");
+			})
+
+		} else {
+			alert("Preencha o formulário corretamente");
+		}
+	};
+
+})
+
+app.controller('CadastroAreaDeProcesso', function ($scope, ModelosCollectionService, CategoriaCollectionService, NivelMaturidadeCollectionService, MetaEspecificaService, areaProcessoService) {
+	$scope.init = function () {
+		ModelosCollectionService.selectModelo('/getModelo').then(function () {
+			$scope.modelos = ModelosCollectionService.getModelo();
+			$scope.categoria().then(function () {
+				$scope.nivelMaturidade().then(function () {
+					$scope.metaEspecifica().then(function () {
+						$scope.$applyAsync();
+					})
+
+				})
+			})
+
+
+		})
+	}
+	$scope.categoria = function () {
+		return new Promise(function (resolve, reject) {
+			CategoriaCollectionService.selectCategoria('/getCategoria').then(function () {
+				$scope.categorias = CategoriaCollectionService.getCategoria();
+				resolve();
+			});
+		})
+	}
+	$scope.nivelMaturidade = function () {
+		return new Promise(function (resolve, reject) {
+			NivelMaturidadeCollectionService.selectNivelMaturidade('/getNivelMaturidade').then(function () {
+				$scope.maturidades = NivelMaturidadeCollectionService.getNiveisMaturidade();
+				resolve();
+			})
+		})
+	}
+	$scope.metaEspecifica = function () {
+		return new Promise(function (resolve, reject) {
+			MetaEspecificaService.selectMetaEspecifica('/metaEspecifica').then(function (data) {
+				$scope.metas = MetaEspecificaService.getMetaEspecifica();
+				resolve();
+			})
+		})
+	}
+	$scope.addAreaProcess = function () {
+		if ($scope.form_2.$valid) {
+			areaProcesso = {};
+			areaProcesso['sigla'] = $scope.sigla_AreaProcesso;
+			areaProcesso['nome'] = $scope.nome_AreaProcesso;
+			areaProcesso['descricao'] = $scope.descricao_AreaProcesso;
+			areaProcesso['id_categoria'] = $scope.selectCategoria;
+			areaProcesso['id_modelo'] = $scope.SelectModelo;
+			areaProcesso['id_nivelmaturidade'] = $scope.selectNivelMaturidade;
+			areaProcesso['id_metaespecifica'] = $scope.selectMetaEspecifica;
+			console.log(areaProcesso);
+			areaProcessoService.insertAreaProcesso(areaProcesso, '/areaProcesso').then(function () {
+				alert("Area De PRocesso Cadastrado Com Sucesso!");
+			})
+
+		} else {
+			alert("Preencha o formulário corretamente");
+		}
+	}
+
+})
+
+app.controller('AreaProcessoView', ['$scope', 'areaProcessoService', function ($scope, areaProcessoService) {
+
+	$scope.init = function () {
+		areaProcessoService.selectAreaProcesso('/areaProcesso').then(function () {
+			$scope.areaProcessos = areaProcessoService.getAreaProcesso();
+			$scope.$applyAsync();
+		})
+	}
+	$scope.visualizarBotao = true;
+
+	$scope.targetIndex = -1;
+
+	$scope.clicarNoEditar = function (id) {
+		$scope.targetIndex = id;
+		
+	}
+
+	$scope.clicarNoSalvar = function () {
+		$scope.targetIndex = -1;
+		
+	}
+
+
+}])

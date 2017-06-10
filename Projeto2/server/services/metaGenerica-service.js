@@ -20,7 +20,7 @@ selectMetaGenerica = function () {
 
 }
 
-insertMeta = function (sigla, nome, descricao, id_produto, id_modelo) {
+insertMeta = function (sigla, nome, descricao, id_nivelcapacidade, id_modelo) {
     
     return new Promise(function (resolve, reject) {
         conexao.connect(function (err) {
@@ -28,7 +28,7 @@ insertMeta = function (sigla, nome, descricao, id_produto, id_modelo) {
                 console.log('erro ao iniciar ' + err);
             }
         });
-        conexao.query('INSERT INTO meta_especifica(sigla, nome, descricao, id_modelo, id_praticaespecifica) VALUES (?,?,?,?,?)', [sigla, nome, descricao, id_produto, id_modelo], function (err, res) {
+        conexao.query('INSERT INTO meta_generica(sigla, nome, descricao, id_modelo, id_nivelcapacidade) VALUES (?,?,?,?,?)', [sigla, nome, descricao, id_modelo,id_nivelcapacidade], function (err, res) {
             if (err) {
                 console.log(err);
             } else {

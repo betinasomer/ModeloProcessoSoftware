@@ -8,10 +8,11 @@ var metaGenerica = require('./server/controllers/metaGenerica-controller.js');
 var categoria = require('./server/services/categoria.js');
 var nivelMaturidade = require('./server/services/nivelMaturidade.js');
 var nivelCapacidade = require('./server/services/nivelCapacidade.js');
+var areaProcesso = require('./server/controllers/areadeProcesso-controller.js');
 
 var caminho = __dirname + '/server/upload/temp/';
 var bodyParser = require('body-parser');
-var multer = require('multer'); 
+var multer = require('multer');
 var http = require("http");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -47,12 +48,12 @@ app.post('/saveCategoria', upload.any(), function (pedido, resposta) {
     let response = categoria.inserirCategoriaBanco(pedido.body.nome, pedido.body.id_modelo);
 });
 
-app.post('/saveNivelMaturidade', upload.any(), function(pedido, resposta){
+app.post('/saveNivelMaturidade', upload.any(), function (pedido, resposta) {
     console.log('Server.js nivel de maturidade /saveNivelMaturidade');
     let response = nivelMaturidade.inserirNivelMaturidadeBanco(pedido.body.sigla, pedido.body.nome, pedido.body.descricao, pedido.body.id_modelo);
 })
 
-app.post('/saveNivelCapacidade', upload.any(), function(pedido, resposta){
+app.post('/saveNivelCapacidade', upload.any(), function (pedido, resposta) {
     console.log('Serverjs cadastro nivel Capacidade');
     let response = nivelCapacidade.inserirNivelCapacidadeBanco(pedido.body.sigla, pedido.body.nome, pedido.body.descricao, pedido.body.id_modelo);
 })
@@ -74,17 +75,17 @@ app.get('/getCategoria', function (pedido, resposta) {
         resposta.send(res);
     })
 })
-app.get('/getNivelMaturidade', function(pedido, resposta){
+app.get('/getNivelMaturidade', function (pedido, resposta) {
     console.log('serve.js nivel maturidade get')
 
-    nivelMaturidade.selectNivelMaturidade().then(function (res){
+    nivelMaturidade.selectNivelMaturidade().then(function (res) {
         resposta.send(res);
     })
 })
 
-app.get('/getNivelCapacidade', function(pedido, resposta){
-    console.log('Server.js getnivelcapacidade');
-    nivelCapacidade.selectNivelCapacidade().then(function (res){
+app.get('/getNivelCapacidade', function (pedido, resposta) {
+
+    nivelCapacidade.selectNivelCapacidade().then(function (res) {
         resposta.send(res);
     })
 })
@@ -121,7 +122,24 @@ app.get('/metaGenerica', function (pedido, resposta) {
 })
 
 
+app.post('/meteGenerica', function (pedido, resposta) {
+    metaGenerica.insertMeta(pedido.body.data).then(function () {
+        resposta.sendStatus(200);
+    })
+})
 
+app.post('/areaProcesso', function (pedido, resposta) {
+    areaProcesso.insertArea(pedido.body.data).then(function () {
+        resposta.sendStatus(200);
+    })
+
+})
+
+app.get('/areaProcesso', function (pedido, resposta) {
+    areaProcesso.selectArea().then(function (data) {
+        resposta.send(data);
+    })
+})
 
 
 

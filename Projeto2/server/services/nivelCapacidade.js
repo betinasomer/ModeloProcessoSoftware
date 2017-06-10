@@ -7,10 +7,9 @@ inserirNivelCapacidadeBanco = function (sigla, nome, descricao, id_modelo) {
             console.log(err);
         }
     });
-    console.log('funcao inserir nivel capacidade do services/nivelCapacidade');
-    return conexao.query('INSERT INTO nivel_capacidade(sigla, nome, descricao, id_modelo) VALUES (?,?,?,?)', [sigla, nome,descricao, id_modelo], function (err, res) {
+    return conexao.query('INSERT INTO nivel_capacidade(sigla, nome, descricao, id_modelo) VALUES (?,?,?,?)', [sigla, nome, descricao, id_modelo], function (err, res) {
         return res;
-    });  
+    });
 };
 selectNivelCapacidadeBanco = function () {
     return new Promise(function (resolve, reject) {
@@ -22,7 +21,6 @@ selectNivelCapacidadeBanco = function () {
         conexao.query('SELECT * FROM nivel_capacidade', function (err, res) {
             if (err) {
             } else {
-                console.log(res);
                 resolve(JSON.stringify(res));
             }
         });
@@ -36,4 +34,4 @@ selectNivelCapacidade = function () {
         });
     })
 }
-module.exports = { inserirNivelCapacidadeBanco, selectNivelCapacidadeBanco, selectNivelCapacidade};
+module.exports = { inserirNivelCapacidadeBanco, selectNivelCapacidadeBanco, selectNivelCapacidade };

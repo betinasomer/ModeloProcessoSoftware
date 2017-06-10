@@ -159,6 +159,21 @@ app.service('metaGenericaService', ['$http', function ($http) {
         })
     }
 
+    this.insertMegaGenerica = function (meta, uploadUrl) {
+
+        return new Promise(function (resolve, reject) {
+            $http.post(uploadUrl, {
+                data: meta,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                }
+            }).success(function (data) {
+                resolve();
+            })
+        })
+    }
+
+
 }]);
 
 
@@ -218,5 +233,58 @@ app.service('MetaEspecificaService', ['$http', function ($http) {
 
 
 }]);
+
+app.service('areaProcessoService', ['$http', function ($http) {
+
+    areaProcesso = []
+
+    this.getAreaProcesso = function () {
+        return areaProcesso;
+    }
+    this.insertAreaProcesso = function (area, uploadUrl) {
+        return new Promise(function (resolve, reject) {
+            $http.post(uploadUrl, {
+                data: area,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                }
+            }).success(function (data) {
+                resolve();
+            })
+        })
+    }
+
+    this.selectAreaProcesso = function (uploadUrl) {
+        return new Promise(function (resolve, reject) {
+            $http.get(uploadUrl, {
+                data: 'areaProcesso',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                }
+            }).success(function (data) {
+                console.log('areaProcesso' + data)
+                areaProcesso = [];
+                for (var i = 0; i < data.length; i++) {
+                    var objareaProcesso = {};
+                    objareaProcesso['id'] = data[i].id;
+                    objareaProcesso['sigla'] = data[i].sigla;
+                    objareaProcesso['nome'] = data[i].nome;
+                    objareaProcesso['descricao'] = data[i].descricao;
+                    objareaProcesso['id_modelo'] = data[i].id_modelo;
+                    objareaProcesso['id_categoria'] = data[i].id_categoria;
+                    objareaProcesso['id_nivelmaturidade'] = data[i].id_nivelmaturidade;
+                    objareaProcesso['id_categoria'] = data[i].id_categoria;
+                    objareaProcesso['id_metaespecifica'] = data[i].id_metaespecifica;
+                    areaProcesso.push(objareaProcesso);
+                }
+
+                resolve();
+            })
+        })
+    }
+
+
+
+}])
 
 
