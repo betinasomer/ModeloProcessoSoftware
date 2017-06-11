@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="cadastroDoNome">
+<head>
+	<meta charset="utf-8">
+	<title>Cadastro do modelo</title>
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.css">
+	<script src="lib/angular/angular.js"></script>
+	<script>
+		angular.module("cadastroDoNome",[]);
+		angular.module("cadastroDoNome").controller("cadastroDoNomeCtrl", function($scope){
+			$scope.cadastrados = "Modelos cadastrados";
+		})
+	</script>
+
+	</script>
+</head>
+<body ng-controller="cadastroDoNomeCtrl">
+
+	<div class="jumbotron">
+		<form name="modeloForm" action="insert.php" method="POST">
+			<input type="text" name="nome" placeholder="Nome" ng-required="true"/>
+			<input type="text" name="sigla" placeholder="Sigla" ng-required="true"/>
+			<input type="text" name="descricao" placeholder="Descrição" ng-required="true"/>
+		
+			<button class="btn btn-primary btn-block" ng-click="cadastrarDadosMedelo()" ng-disabled="modeloForm.$invalid">Castrar</button>
+		</form>
+		<h3>{{cadastrados}}</h3>
+		<table class="table table-striped">
+			<tr>
+				<th>Modelo</th>
+				<th>Sigla</th>
+				<th>Descrição</th>
+			</tr>
+			<tr ng-repeat="modelo in data">
+				<td>{{modelo.nome}}</td>
+				<td>{{modelo.sigla}}</td>	
+				<td>{{modelo.descricao}}</td>
+			</tr>
+		</table>
+		<hr/>
+		
+
+	</div>
+	
+
+</body>
+</html>

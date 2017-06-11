@@ -1,0 +1,17 @@
+** Componentes que devem ser cadastrados dos modelos de Maturidade:
+1. Modelo de Referencia;
+2. Area de Processo;
+3. Meta Específica;
+4. Prática Específica;
+5. Produto de trabalho; 
+6. Nível de maturidade;
+7. Categoria de Processo;
+8. Meta Genérica;
+9. Nível de Capacidade;
+
+** Visualização das informações o modelo:
+A ferramenta deve oferecer uma funcionalidade que permita ao usuário
+visualizar as informações de cada modelo, mostrando as áreas de processo, metas, etc
+
+** Exportação das informações:
+Permitir exportar os dados do modelo para um formato .PDF ou .DOCX.

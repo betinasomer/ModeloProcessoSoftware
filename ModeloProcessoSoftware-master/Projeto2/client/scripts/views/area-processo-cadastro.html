@@ -1,0 +1,57 @@
+<div class="well" ng-controller="CadastroAreaDeProcesso" data-ng-init="init()">
+    <h3>Cadastro Area De Processo </h3>
+    <form name="form_2">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group form-group-default">
+                    <label>Sigla Area De Processo</label>
+                    <input class="form-control" type="text" id="sigla_AreaProcesso" name="sigla_AreaProcesso" ng-model="sigla_AreaProcesso">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group form-group-default">
+                    <label>Nome Area Processo</label>
+                    <input class="form-control" type="text" id="nome_AreaProcesso" name="nome_AreaProcesso" ng-model="nome_AreaProcesso">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group form-group-default">
+                    <label>Descricao do AreaProcesso</label>
+                    <input class="form-control" type="text" id="descricao_AreaProcesso" name="descricao_AreaProcesso" ng-model="descricao_AreaProcesso">
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <label>Definir Categoria</label>
+                <select name="singleSelect" id="singleSelect" ng-model="selectCategoria">
+      			<option ng-repeat="categoria in categorias" value="{{categoria.id}}">{{categoria.nome}}</option>
+         </select>
+            </div>
+            <div class="col-md-4">
+                <label>Modelo: </label>
+                <select name="singleSelect" id="singleSelect" ng-model="SelectModelo">
+						<option ng-repeat="modelo in modelos" value="{{modelo.id}}">{{modelo.sigla}}</option>
+   	 				</select>
+            </div>
+            <div class="col-md-3">
+                <label>Definir Nivel de Maturidade</label>
+                <select name="singleSelect" id="singleSelect" ng-model="selectNivelMaturidade">
+      			<option ng-repeat="maturidade in maturidades" value="{{maturidade.id}}">{{maturidade.nome}}</option>
+         </select>
+            </div>
+            <div class="col-md-3">
+                <label>Definir Meta Especifica</label>
+                <select name="singleSelect" id="singleSelect" ng-model="selectMetaEspecifica">
+      			<option ng-repeat="meta in metas" value="{{meta.id}}">{{meta.nome}}</option>
+         </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <button ng-click="addAreaProcess()" class="btn btn-primary">Adicionar AreaProcesso</button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,27 @@
+<div class="well" ng-controller="CadastroCategoriaController" data-ng-init="selectModelo()">
+    <h3>Cadastrar novo categoria</h3>
+    <br>
+    <form name="form_categoria">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group form-group-default">
+                    <label>Nome da categoria</label>
+                    <input class="form-control" type="text" id="nome_categoria" name="nome_categoria" ng-model="nome_categoria" ng-minlength="3">
+                </div>
+                <div>
+                    <label>Selecione o modelo dessa categoria</label>
+                    <select name="modeloM" id="modeloM" ng-model="modeloM">
+                     <option ng-repeat="modelo in modelos" value="{{modelo.id}}">{{modelo.sigla}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                <button ng-click="submeterCategoria()" class="btn btn-primary">Adicionar categoria</button>
+            </div>
+        </div>
+    </form>
+</div>

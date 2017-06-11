@@ -1,0 +1,24 @@
+<div ng-controller="CategoriaController" class="well" data-ng-init="selectCategoria()">
+    <h4>Categorias</h4>  
+    <br>   
+    <div class="table-responsive">
+	<table class="table table-striped" >
+	    <tr>
+		    <th>Codigo</th>
+            <th>Nome</th>
+            <th>Id Modelo</th>            
+		</tr>
+		<tr ng-repeat="categoria in categorias" id="categorias" name="categorias" ng-model="categorias">
+		  	<td>
+            {{categoria.id}} 
+            </td>
+            <td>
+	   		{{categoria.nome}}
+	    	</td>
+            <td>
+            {{categoria.id_modelo}}
+            </td>     
+		</tr>
+	</table>
+    </div>
+</div>

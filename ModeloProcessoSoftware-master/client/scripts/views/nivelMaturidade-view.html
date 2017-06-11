@@ -1,0 +1,25 @@
+<div ng-controller="NivelMaturidadeViewController" class="well">
+    <h2>Níveis de maturidade</h2>     
+    <div class="table-responsive">
+	<table class="table table-striped" >
+	    <tr>
+            <th>Modelo de Maturidade</th>
+		    <th>Sigla</th>
+            <th>Nome</th>
+            <th>Descricao</th>
+		</tr>
+		<tr ng-repeat="nivel in niveis">
+            <td> {{nivel.modelo}} </td>
+		  	<td>
+            {{nivel.siglaN}} 
+            </td>
+            <td>
+	   		{{nivel.nomeN}}
+	    	</td>
+            <td>
+            {{nivel.descricaoN}}
+            </td>    
+		</tr>
+	</table>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="well" ng-controller="CadastroProdutoTrabalhoController" data-ng-init="init()">
+	<h3>Produto de Trabalho</h3>
+
+	<form name="form_1">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group form-group-default">
+					<label>Cadastre um nome para o Produto de trabalho</label>
+					<input type="text" ng-model="nome">
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group form-group-default">
+					<label>Selecione um arquivo de seu computador</label>
+					<input type="file" file-model="myFile" />
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group form-group-default">
+					<label>Modelo: </label>
+					
+					<select name="singleSelect" id="singleSelect" ng-model="SelectModelo">
+						<option ng-repeat="modelo in modelos" value="{{modelo.id}}">{{modelo.sigla}}</option>
+   	 				</select>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="col-md-4">
+				<button ng-click="uploadFile()" class="btn btn-primary">Enviar</button>
+			</div>
+		</div>
+
+	</form>
+
+
+
+
+
+</div>

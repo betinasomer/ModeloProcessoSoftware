@@ -1,0 +1,51 @@
+<div ng-controller="AreaProcessoView" class="well" data-ng-init="init()">
+    <h2>Area De Processo</h2>     
+    <div class="table-responsive">
+	<table class="table table-striped" >
+	    <tr>
+            <th>Nome</th>
+		    <th>Sigla</th>
+            <th>Descricao</th>
+            
+            <th>Modelo</th>
+
+            <th>Categoria</th>
+            <th>Nivel Maturidade</th>
+            <th>Meta Especifica</th>
+            <th>Editar</th>
+		</tr>
+        <input type="text" name="fname" value="John">
+		<tr ng-repeat="areaProcesso in areaProcessos track by $index">
+            <td> {{areaProcesso.nome}} 
+                <input type="text" ng-value="areaProcesso.nome" ng-bind="areaProcesso.theNewCode" ng-model="areaNome"/>
+
+            </td>
+            
+		  	<td>
+            {{areaProcesso.sigla}} 
+            </td>
+            <td>
+	   		{{areaProcesso.descricao}}
+	    	</td>
+            <td>
+            {{areaProcesso.id_modelo}}
+            </td>  
+
+            <td>
+            {{areaProcesso.id_categoria}}
+            </td>  
+            <td>
+            {{areaProcesso.id_nivelmaturidade}}
+            </td>
+            <td>
+            {{areaProcesso.id_metaespecifica}}
+            </td>
+            <td>
+            <button class="btn btn-small btn-primary" ng-hide="(targetIndex == $index)" ng-click="clicarNoEditar($index)" id=areaProcesso.id_metaespecifica>Editar</button>
+            <button class="btn btn-small btn-success" ng-hide="!(targetIndex == $index)" ng-click="clicarNoSalvar()" id=areaProcesso.id_metaespecifica >Salvar</button>
+
+            </td>     
+		</tr>
+	</table>
+    </div>
+</div>

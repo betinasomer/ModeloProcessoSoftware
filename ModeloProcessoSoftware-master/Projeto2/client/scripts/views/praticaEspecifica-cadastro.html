@@ -1,0 +1,45 @@
+<div class="well" ng-controller="CadastroPraticaEspecifica" data-ng-init="iniciarController()">
+	<h3>Cadastro pratica Especifica </h3>
+	<form name="form_2">
+		<div class="row">
+			<div class="col-md-3">
+				<div class="form-group form-group-default">
+					<label>Sigla Pratica Especifica</label>
+					<input class="form-control" type="text" id="sigla_pratica" name="sigla_pratica" ng-model="sigla_pratica">
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group form-group-default">
+					<label>Nome Pratica Especifica</label>
+					<input class="form-control" type="text" id="nome_pratica" name="nome_pratica" ng-model="nome_pratica">
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group form-group-default">
+					<label>Descricao do Pratica Especifica</label>
+					<input class="form-control" type="text" id="descricao_pratica" name="descricao_pratica" ng-model="descricao_pratica">
+				</div>
+			</div>
+
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<label>Definir Produto Trabalho</label>
+				<select name="singleSelect" id="singleSelect" ng-model="selectProdutoTrabalho">
+      			<option ng-repeat="prodTRabalho in prodTRabalhos" value="{{prodTRabalho.id}}">{{prodTRabalho.nome}}</option>
+         </select>
+			</div>
+			<div class="col-md-4">
+				<label>Modelo: </label>
+				<select name="singleSelect" id="singleSelect" ng-model="SelectModelo">
+						<option ng-repeat="modelo in modelos" value="{{modelo.id}}">{{modelo.sigla}}</option>
+   	 				</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<button ng-click="addPraticaEspecifica()" class="btn btn-primary">Adicionar pratica</button>
+			</div>
+		</div>
+	</form>
+</div>

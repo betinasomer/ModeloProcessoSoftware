@@ -1,0 +1,28 @@
+<div ng-controller="NivelMaturidadeViewController" class="well" data-ng-init="selectNivelMaturidade()">
+    <h2>Níveis de maturidade</h2>
+    <br>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tr>
+                <th>Sigla</th>
+                <th>Nome</th>
+                <th>Descricao</th>
+                <th>Modelo de Maturidade</th>
+            </tr>
+            <tr ng-repeat="nivel in niveisMaturidade" id="niveisMaturidade" name="niveisMaturidade" ng-model="niveisMaturidade">
+                <td>
+                    {{nivel.sigla}}
+                </td>
+                <td>
+                    {{nivel.nome}}
+                </td>
+                <td>
+                    {{nivel.descricao}}
+                </td>
+                <td>
+                    {{nivel.modelo}}
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
