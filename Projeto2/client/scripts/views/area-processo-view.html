@@ -1,51 +1,73 @@
 <div ng-controller="AreaProcessoView" class="well" data-ng-init="init()">
-    <h2>Area De Processo</h2>     
+    <h2>Area De Processo</h2>
     <div class="table-responsive">
-	<table class="table table-striped" >
-	    <tr>
-            <th>Nome</th>
-		    <th>Sigla</th>
-            <th>Descricao</th>
-            
-            <th>Modelo</th>
+        <table class="table table-striped">
+            <tr>
+                <th>Nome</th>
+                <th>Sigla</th>
+                <th>Descricao</th>
 
-            <th>Categoria</th>
-            <th>Nivel Maturidade</th>
-            <th>Meta Especifica</th>
-            <th>Editar</th>
-		</tr>
-        <input type="text" name="fname" value="John">
-		<tr ng-repeat="areaProcesso in areaProcessos track by $index">
-            <td> {{areaProcesso.nome}} 
-                <input type="text" ng-value="areaProcesso.nome" ng-bind="areaProcesso.theNewCode" ng-model="areaNome"/>
+                <th>Modelo</th>
 
-            </td>
-            
-		  	<td>
-            {{areaProcesso.sigla}} 
-            </td>
-            <td>
-	   		{{areaProcesso.descricao}}
-	    	</td>
-            <td>
-            {{areaProcesso.id_modelo}}
-            </td>  
+                <th>Categoria</th>
+                <th>Nivel Maturidade</th>
+                <th>Meta Especifica</th>
+                <th>Editar</th>
+            </tr>
 
-            <td>
-            {{areaProcesso.id_categoria}}
-            </td>  
-            <td>
-            {{areaProcesso.id_nivelmaturidade}}
-            </td>
-            <td>
-            {{areaProcesso.id_metaespecifica}}
-            </td>
-            <td>
-            <button class="btn btn-small btn-primary" ng-hide="(targetIndex == $index)" ng-click="clicarNoEditar($index)" id=areaProcesso.id_metaespecifica>Editar</button>
-            <button class="btn btn-small btn-success" ng-hide="!(targetIndex == $index)" ng-click="clicarNoSalvar()" id=areaProcesso.id_metaespecifica >Salvar</button>
+            <tr ng-repeat="areaProcesso in areaProcessos track by $index">
+                <td>
+                    <div ng-hide="(targetIndex == $index)"> {{areaProcesso.nome}} </div>
+                    <input type="text" ng-model="area_nome[$index]" ng-init="area_nome[$index] = areaProcesso.nome" ng-hide="!(targetIndex == $index)"
+                        style="width:125px;">
+                </td>
 
-            </td>     
-		</tr>
-	</table>
+                <td>
+                    <div ng-hide="(targetIndex == $index)"> {{areaProcesso.sigla}}</div>
+                    <input type="text" ng-model="area_sigla[$index]" ng-init="area_sigla[$index] = areaProcesso.sigla" ng-hide="!(targetIndex == $index)"
+                        style="width:125px;">
+                </td>
+                <td>
+                    <div ng-hide="(targetIndex == $index)"> {{areaProcesso.descricao}}</div>
+                    <input type="text" ng-model="area_descricao[$index]" ng-init="area_descricao[$index] = areaProcesso.descricao" ng-hide="!(targetIndex == $index)"
+                        style="width:125px;">
+                </td>
+                <td>
+                    <div ng-hide="(targetIndex == $index)"> {{areaProcesso.sigla_modelo}}</div>
+                    <select name="SelectModelo[$index]" id="SelectModelo[$index]" ng-model="SelectModelo[$index]" ng-hide="!(targetIndex == $index)">
+						<option ng-repeat="modelo in modelos" value="{{modelo.id}}" ng-selected="{{areaProcesso.sigla_modelo == modelo.sigla}}">{{modelo.sigla}}</option>
+   	 				</select>
+                </td>
+
+                <td>
+                    <div ng-hide="(targetIndex == $index)"> {{areaProcesso.nome_categoria}}</div>
+                    <select name="selectCategoria[$index]" id="selectCategoria[$index]" ng-model="selectCategoria[$index]" ng-hide="!(targetIndex == $index)">
+      			        <option ng-repeat="categoria in categorias" value="{{categoria.id}}" ng-selected="{{areaProcesso.nome_categoria == categoria.nome}}">{{categoria.nome}}</option>
+                    </select>
+                </td>
+                <td>
+                    <div ng-hide="(targetIndex == $index)"> {{areaProcesso.nome_maturidade}}</div>
+                    <select name="singleSelect" id="singleSelect" ng-model="selectNivelMaturidade[$index]" ng-hide="!(targetIndex == $index)">
+      			        <option ng-repeat="maturidade in maturidades" value="{{maturidade.id}}" ng-selected="{{areaProcesso.nome_maturidade == maturidade.nome}}">{{maturidade.nome}}</option>
+                    </select>
+                </td>
+                <td>
+                    <div ng-hide="(targetIndex == $index)"> {{areaProcesso.nome_metaEspecifica}}</div>
+                    <select name="singleSelect" id="singleSelect" ng-model="selectMetaEspecifica[$index]" ng-hide="!(targetIndex == $index)">
+      			        <option ng-repeat="meta in metas" value="{{meta.id}}" ng-selected="{{areaProcesso.nome_metaEspecifica == meta.nome}}">{{meta.nome}}</option>
+                    </select>
+                </td>
+                <td>
+                    <button class="btn btn-small btn-primary" ng-hide="(targetIndex == $index)" ng-click="clicarNoEditar($index)">Editar</button>
+                    <button class="btn btn-small btn-success" ng-hide="!(targetIndex == $index)" ng-click="clicarNoSalvar($index,area_nome[$index],area_sigla[$index], area_descricao[$index], SelectModelo[$index], selectCategoria[$index], selectNivelMaturidade[$index], selectMetaEspecifica[$index])">Salvar</button>
+                    <button class="btn btn-small btn-warning" ng-hide="!(targetIndex == $index)" ng-click="clicarNoCancelar()">Cancelar</button>
+
+                </td>
+            </tr>
+        </table>
     </div>
+
+
+
+
 </div>

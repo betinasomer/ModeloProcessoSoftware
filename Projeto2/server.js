@@ -75,9 +75,9 @@ app.get('/nivelMaturidade', function (pedido, resposta) {
 
     var idModelo = pedido.query.idModelo || null;
 
-    visualizacaogeral.selectNiveisById( idModelo ).then (function ( res ){
-        resposta.send( res );
-    });    
+    visualizacaogeral.selectNiveisById(idModelo).then(function (res) {
+        resposta.send(res);
+    });
 });
 
 app.get('/modelo', function (pedido, resposta) {
@@ -85,10 +85,10 @@ app.get('/modelo', function (pedido, resposta) {
 
     var idModelo = pedido.query.idModelo || null;
 
-    visualizacaogeral.selectModeloId( idModelo ).then (function ( res ){
-        console.log( 'console /modelo ' + res );
-        resposta.send( res );
-    });    
+    visualizacaogeral.selectModeloId(idModelo).then(function (res) {
+        console.log('console /modelo ' + res);
+        resposta.send(res);
+    });
 });
 
 app.get('/getCategoria', function (pedido, resposta) {
@@ -162,7 +162,12 @@ app.get('/areaProcesso', function (pedido, resposta) {
     })
 })
 
+app.put('/areaProcesso', function (pedido, resposta) {
 
+    areaProcesso.updateArea(pedido.body.data).then(function () {
+        resposta.sendStatus(200);
+    })
+})
 
 
 

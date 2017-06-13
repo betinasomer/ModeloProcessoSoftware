@@ -24,27 +24,28 @@
         </div>
         <div class="row">
             <div class="col-md-3">
-                <label>Definir Categoria</label>
-                <select name="singleSelect" id="singleSelect" ng-model="selectCategoria">
-      			<option ng-repeat="categoria in categorias" value="{{categoria.id}}">{{categoria.nome}}</option>
-         </select>
-            </div>
-            <div class="col-md-4">
                 <label>Modelo: </label>
                 <select name="singleSelect" id="singleSelect" ng-model="SelectModelo">
 						<option ng-repeat="modelo in modelos" value="{{modelo.id}}">{{modelo.sigla}}</option>
    	 				</select>
+
+            </div>
+            <div class="col-md-4">
+                <label>Definir Categoria</label>
+                <select name="singleSelect" id="singleSelect" ng-model="selectCategoria">
+      			<option ng-repeat="categoria in categorias| filter:myfilter" value="{{categoria.id}}">{{categoria.nome}}</option>
+         </select>
             </div>
             <div class="col-md-3">
                 <label>Definir Nivel de Maturidade</label>
                 <select name="singleSelect" id="singleSelect" ng-model="selectNivelMaturidade">
-      			<option ng-repeat="maturidade in maturidades" value="{{maturidade.id}}">{{maturidade.nome}}</option>
+      			<option ng-repeat="maturidade in maturidades| filter:myfilter" value="{{maturidade.id}}">{{maturidade.nome}} {{maturidade.id_modelo}}</option>
          </select>
             </div>
             <div class="col-md-3">
                 <label>Definir Meta Especifica</label>
                 <select name="singleSelect" id="singleSelect" ng-model="selectMetaEspecifica">
-      			<option ng-repeat="meta in metas" value="{{meta.id}}">{{meta.nome}}</option>
+      			<option ng-repeat="meta in metas| filter:myfilter" value="{{meta.id}}">{{meta.nome}}</option>
          </select>
             </div>
         </div>
