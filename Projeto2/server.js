@@ -9,7 +9,7 @@ var categoria = require('./server/services/categoria.js');
 var nivelMaturidade = require('./server/services/nivelMaturidade.js');
 var nivelCapacidade = require('./server/services/nivelCapacidade.js');
 var areaProcesso = require('./server/controllers/areadeProcesso-controller.js');
-
+var visualizacaogeral = require('./server/controllers/visualizacaogeral.js');
 var caminho = __dirname + '/server/upload/temp/';
 var bodyParser = require('body-parser');
 var multer = require('multer');
@@ -68,6 +68,27 @@ app.get('/getModelo', function (pedido, resposta) {
     modelo.selectModelo().then(function (res) {
         resposta.send(res);
     })
+});
+
+app.get('/nivelMaturidade', function (pedido, resposta) {
+    console.log('Server.js /nivelMaturidade');
+
+    var idModelo = pedido.query.idModelo || null;
+
+    visualizacaogeral.selectNiveisById( idModelo ).then (function ( res ){
+        resposta.send( res );
+    });    
+});
+
+app.get('/modelo', function (pedido, resposta) {
+    console.log('Server.js /modelo');
+
+    var idModelo = pedido.query.idModelo || null;
+
+    visualizacaogeral.selectModeloId( idModelo ).then (function ( res ){
+        console.log( 'console /modelo ' + res );
+        resposta.send( res );
+    });    
 });
 
 app.get('/getCategoria', function (pedido, resposta) {

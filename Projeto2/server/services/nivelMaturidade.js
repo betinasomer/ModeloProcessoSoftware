@@ -2,15 +2,10 @@ var db = require('../config/db.js');
 var conexao = db.conexao();
 
 inserirNivelMaturidadeBanco = function (sigla, nome, descricao, id_modelo) {
-    conexao.connect(function (err) {
-        if (err) {
-            console.log(err);
-        }
-    });
     console.log('funcao inserir nivel maturidade do services/nivelMaturidade');
     //INSERT INTO nivel_maturidade(sigla, nome, descricao, id_modelo) VALUES (
     return conexao.query('INSERT INTO nivel_maturidade(sigla, nome, descricao, id_modelo) VALUES (?,?,?,?)', [sigla, nome,descricao, id_modelo], function (err, res) {
-        return res;
+        
     }); 
 };
 selectNivelMaturidadeBanco = function () {
@@ -37,4 +32,15 @@ selectNivelMaturidade = function () {
         });
     })
 }
-module.exports = { inserirNivelMaturidadeBanco, selectNivelMaturidadeBanco, selectNivelMaturidade};
+
+selectNiveisByModelo = function ( idModelo ) {
+    return new Promise(function (resolve, reject) {
+        conexao.query('SELECT DISTINCT * FROM nivel_maturidade WHERE id_modelo = ?', [ idModelo ], function (err, res) {
+            if (err) { console.log('erro '+err); } else {
+                resolve( res );
+            }
+        });
+    })
+};
+
+module.exports = { inserirNivelMaturidadeBanco, selectNivelMaturidadeBanco, selectNivelMaturidade, selectNiveisByModelo};

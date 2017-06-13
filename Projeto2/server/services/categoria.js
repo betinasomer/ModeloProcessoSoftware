@@ -27,6 +27,7 @@ selectCategoriaBanco = function () {
     })
 };
 
+
 selectCategoria = function () {
     return new Promise(function (resolve, reject) {
         this.selectCategoriaBanco().then(function (res, rej) {
@@ -34,4 +35,20 @@ selectCategoria = function () {
         });
     })
 }
-module.exports = { inserirCategoriaBanco, selectCategoriaBanco, selectCategoria};
+
+selectCategoriaIdBanco = function () {
+    return new Promise(function (resolve, reject) {
+        conexao.connect(function (err) {
+            if (err) {
+                console.log('erro ao iniciar ' + err);
+            }
+        });
+        conexao.query('SELECT * FROM categoria WHERE idModelo = ', function (err, res) {
+            if (err) {
+            } else {
+                resolve(JSON.stringify(res));
+            }
+        });
+    })
+};
+module.exports = { inserirCategoriaBanco, selectCategoriaBanco, selectCategoria, selectCategoriaIdBanco};

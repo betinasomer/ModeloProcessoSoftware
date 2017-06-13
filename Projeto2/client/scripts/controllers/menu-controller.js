@@ -58,4 +58,7 @@ angular.module('FerramentaProcesso').controller('MenuController', function ($sco
 	$scope.irAreaProcesso = function(){
 		$state.go("aplicacao_view_areaProcesso")
 	}
+	$scope.irVisualizacaoGeral = function(obj){
+		$state.go("aplicacao_visualizacaogeral", obj);
+	}
 });

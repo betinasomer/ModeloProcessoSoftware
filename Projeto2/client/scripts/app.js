@@ -78,7 +78,12 @@ var app = angular.module('FerramentaProcesso', ['ngResource', 'ui.router'])
 				name: 'aplicacao_view_areaProcesso',
 				url: 'area-processo-view.html',
 				templateUrl: 'scripts/views/area-processo-view.html'
+			}).state('aplicacao_visualizacaogeral', {
+				name: 'aplicacao_visualizacaogeral',
+				url: 'visualizacaogeral.html',
+				templateUrl: 'scripts/views/visualizacaogeral.html'
 			});
+
 	});
 
 app.run(function ($rootScope, $state) {

@@ -43,4 +43,33 @@ angular.module('FerramentaProcesso').service('ModelosCollectionService', ['$http
             });
         })
     }
+
+    var modelo;
+
+    this.selectModeloId = function (idModelo){
+        // Objeto final que será retornado
+        var args = {};
+
+        console.log('Select ModeloID CollectionService '+idModelo);
+        return new Promise(function (resolve, reject) {
+            return $http.get('/modelo', {
+                params: { idModelo }
+            }).success(function (data) {
+                args.modelo = data[0];
+                console.log('Resultado busca modelo '+args.modelo);
+
+                //obtem niveis maturidade
+                return $http.get( '/nivelMaturidade', {
+                    params: { idModelo }
+                }).success( function( niveis ) {
+                    args.niveisMaturidade = niveis[0];
+                    resolve( args );
+                });
+            });
+        })
+    }
+
+    this.getModeloID = function(){
+        return modelo;
+    }
 }]);

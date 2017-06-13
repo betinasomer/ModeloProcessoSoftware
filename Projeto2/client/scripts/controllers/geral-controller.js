@@ -30,6 +30,11 @@ app.controller('CategoriaController', function ($scope, CategoriaCollectionServi
 		});
 	}
 	$scope.categorias = CategoriaCollectionService.getCategoria();
+
+	$scope.imprimirPagina = function () {
+		var btn_print = document.querySelector('#botao-print');
+		btn_print.addEventListener('click', function () { print(); })
+	}
 });
 
 app.controller('CadastroNivelCapacidadeController', function ($scope, $http, NivelCapacidadeCollectionService, ModelosCollectionService) {
@@ -298,12 +303,12 @@ app.controller('AreaProcessoView', ['$scope', 'areaProcessoService', function ($
 
 	$scope.clicarNoEditar = function (id) {
 		$scope.targetIndex = id;
-		
+
 	}
 
 	$scope.clicarNoSalvar = function () {
 		$scope.targetIndex = -1;
-		
+
 	}
 
 

@@ -26,15 +26,23 @@
 	<div class="btn-group" ng-controller="MenuController">
 		<button type="button" class="btn btn-default" ng-click="irInicio()">Inicio</button>
 		<button type="button" class="btn btn-default" ng-click="irViewModelo()">Modelos</button>
-		<button type="button" class="btn btn-default" ng-click="irViewNivelMaturidade()">Nível de Maturidade</button>
-		<button type="button" class="btn btn-default" ng-click="irPraticaEspecifica()">Pratica Especifica</button>
-		<button type="button" class="btn btn-default" ng-click="irViewCategoria()">Categoria</button>
-		<button type="button" class="btn btn-default" ng-click="irViewProdutoTrabalho()">Produto Trabalho</button>
-		<button type="button" class="btn btn-default" ng-click="irMetaEspecifica()">Meta Especifica</button>
-		<button type="button" class="btn btn-default" ng-click="irViewNivelCapacidade()">Nivel de Capacidade</button>
-		<button type="button" class="btn btn-default" ng-click="irMetaGenerica()">Meta Generica</button>
-		<button type="button" class="btn btn-default" ng-click="irAreaProcesso()">Area Processo</button>
-		
+		<div class="btn-group">
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      	Visualizar
+      	<span class="caret"></span>
+    	</button>
+			<ul class="dropdown-menu">				
+				<li><a ng-click="irViewModelo()">Modelo</a></li>
+				<li><a ng-click="irViewNivelMaturidade()">Nivel de Maturidade</a></li>
+				<li><a ng-click="irPraticaEspecifica()">Pratica Especifica</a></li>
+				<li><a ng-click="irViewCategoria()">Categoria</a></li>
+				<li><a ng-click="irViewProdutoTrabalho()">Produto Trabalho</a></li>
+				<li><a ng-click="irMetaEspecifica()">Meta Especifica</a></li>
+				<li><a ng-click="irViewNivelCapacidade()">Nivel de Capacidade</a></li>
+				<li><a ng-click="irMetaGenerica()">Meta Generica</a></li>
+				<li><a ng-click="irAreaProcesso()">Area de Processo</a></li>
+			</ul>
+		</div>
 		<div class="btn-group">
 			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       	Cadastrar
@@ -42,11 +50,11 @@
     	</button>
 			<ul class="dropdown-menu">
 				<li><a ng-click="irCadastroModelo()">Modelo</a></li>
-				<li><a ng-click="irCadastroCategoria()">Categoria</a></li>	
+				<li><a ng-click="irCadastroCategoria()">Categoria</a></li>
 				<li><a ng-click="irCadastroNivelMaturidade()">Nível de Maturidade</a></li>
 				<li><a ng-click="irCadastroProdutoTrabalho()">Produto de Trabalho</a></li>
 				<li><a ng-click="irCadatroPraticaEspecifica()">PraticaEspecifica</a></li>
-				<li><a ng-click="irCadastroNivelCapacidade()">Nível de Capacidade</a></li>	
+				<li><a ng-click="irCadastroNivelCapacidade()">Nível de Capacidade</a></li>
 				<li><a ng-click="irCadastroMetaEspecifica()">Meta Especifica</a></li>
 				<li><a ng-click="irCadatroMetaGenerica()">Meta Generica</a></li>
 				<li><a ng-click="irCadastroAreaProcesso()">Area de Proceso</a></li>

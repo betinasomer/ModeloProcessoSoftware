@@ -8,21 +8,16 @@
             <th>Sigla</th>
             <th>Nome</th>
             <th>Descricao</th>
+            <th></th>
 		</tr>
 		<tr ng-repeat="modelo in modelos" id="modelos" name="modelos" ng-model="modelos">
-		  	<td>
-            {{modelo.id}} 
-            </td>
-            <td>
-	   		{{modelo.sigla}}
-	    	</td>
-            <td>
-	   		{{modelo.nome}}
-	    	</td>
-            <td>
-            {{modelo.descricao}}
-            </td>     
+		  	<td>{{modelo.id}} </td>
+            <td>{{modelo.sigla}}</td>
+            <td>{{modelo.nome}}	</td>
+            <td>{{modelo.descricao}} </td>   
+            <td><a class="btn btn-small btn-primary" ng-click="detalhesModelo(modelo.id)">Ver detalhes</a></td>  
 		</tr>
 	</table>
     </div>
+    <button ng-click="imprimirPagina()" id='modelo-print' class="btn btn-primary">Imprimir</button>
 </div>
