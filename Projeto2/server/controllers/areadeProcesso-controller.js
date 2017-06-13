@@ -11,10 +11,19 @@ insertArea = function (area) {
 }
 selectArea = function () {
     return new Promise(function (resolve, reject) {
-        serviceArea.selectArea().then(function(data){
+        serviceArea.selectArea().then(function (data) {
             resolve(data);
         })
     })
 }
 
-module.exports = { insertArea, selectArea }
+updateArea = function(data){
+    return new Promise(function(resolve, reject){        
+    serviceArea.updateArea(data.id, data.sigla, data.nome, data.descricao, data.id_categoria, data.id_modelo,data.id_nivelmaturidade, data.id_metaespecifica)
+    resolve();
+    })
+    
+}
+
+
+module.exports = { insertArea, selectArea, updateArea }

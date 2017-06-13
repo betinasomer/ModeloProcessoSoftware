@@ -238,6 +238,19 @@ app.service('areaProcessoService', ['$http', function ($http) {
 
     areaProcesso = []
 
+    this.updateAreaProcesso = function (area, uploadUrl) {
+        return new Promise(function (resolve, reject) {
+            $http.put(uploadUrl, {
+                data: area,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                }
+            }).success(function () {
+                resolve();
+            })
+        })
+    }
+
     this.getAreaProcesso = function () {
         return areaProcesso;
     }
@@ -271,10 +284,14 @@ app.service('areaProcessoService', ['$http', function ($http) {
                     objareaProcesso['nome'] = data[i].nome;
                     objareaProcesso['descricao'] = data[i].descricao;
                     objareaProcesso['id_modelo'] = data[i].id_modelo;
+                    objareaProcesso['sigla_modelo'] = data[i].sigla_modelo;
                     objareaProcesso['id_categoria'] = data[i].id_categoria;
+                    objareaProcesso['nome_categoria'] = data[i].nome_categoria;
                     objareaProcesso['id_nivelmaturidade'] = data[i].id_nivelmaturidade;
+                    objareaProcesso['nome_maturidade'] = data[i].nome_maturidade;
                     objareaProcesso['id_categoria'] = data[i].id_categoria;
                     objareaProcesso['id_metaespecifica'] = data[i].id_metaespecifica;
+                    objareaProcesso['nome_metaEspecifica'] = data[i].nome_metaEspecifica;
                     areaProcesso.push(objareaProcesso);
                 }
 
