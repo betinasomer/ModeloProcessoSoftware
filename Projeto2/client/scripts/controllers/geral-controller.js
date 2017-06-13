@@ -228,6 +228,12 @@ app.controller('CadastroMetaGenerica', function ($scope, NivelCapacidadeCollecti
 })
 
 app.controller('CadastroAreaDeProcesso', function ($scope, ModelosCollectionService, CategoriaCollectionService, NivelMaturidadeCollectionService, MetaEspecificaService, areaProcessoService) {
+
+	$scope.myfilter = function (item) {
+		if (item.id_modelo == $scope.SelectModelo) {
+			return item;
+		}
+	}
 	$scope.init = function () {
 		ModelosCollectionService.selectModelo('/getModelo').then(function () {
 			$scope.modelos = ModelosCollectionService.getModelo();
@@ -267,6 +273,7 @@ app.controller('CadastroAreaDeProcesso', function ($scope, ModelosCollectionServ
 			})
 		})
 	}
+
 	$scope.addAreaProcess = function () {
 		if ($scope.form_2.$valid) {
 			areaProcesso = {};
@@ -289,27 +296,95 @@ app.controller('CadastroAreaDeProcesso', function ($scope, ModelosCollectionServ
 
 })
 
-app.controller('AreaProcessoView', ['$scope', 'areaProcessoService', function ($scope, areaProcessoService) {
+app.controller('AreaProcessoView', function ($scope, MetaEspecificaService, NivelMaturidadeCollectionService, areaProcessoService, ModelosCollectionService, CategoriaCollectionService) {
 
 	$scope.init = function () {
 		areaProcessoService.selectAreaProcesso('/areaProcesso').then(function () {
 			$scope.areaProcessos = areaProcessoService.getAreaProcesso();
-			$scope.$applyAsync();
+			$scope.getModelo().then(function () {
+				$scope.$applyAsync();
+			})
 		})
 	}
+
+	$scope.getModelo = function () {
+		return new Promise(function (resolve, reject) {
+			ModelosCollectionService.selectModelo('/getModelo').then(function () {
+				$scope.modelos = ModelosCollectionService.getModelo();
+				$scope.getCategoria().then(function () {
+					resolve();
+				})
+
+			})
+		})
+	}
+	$scope.getCategoria = function () {
+		return new Promise(function (resolve, reject) {
+			CategoriaCollectionService.selectCategoria('/getCategoria').then(function () {
+				$scope.categorias = CategoriaCollectionService.getCategoria();
+				$scope.getNiveisMaturidade().then(function () {
+					resolve();
+				})
+
+			});
+		})
+	}
+
+	$scope.getNiveisMaturidade = function () {
+		return new Promise(function (resolve, reject) {
+			NivelMaturidadeCollectionService.selectNivelMaturidade('/getNivelMaturidade').then(function () {
+				$scope.maturidades = NivelMaturidadeCollectionService.getNiveisMaturidade();
+				$scope.getMeta().then(function () {
+					resolve();
+				})
+
+			})
+		})
+	}
+	$scope.getMeta = function () {
+		return new Promise(function (resolve, reject) {
+			MetaEspecificaService.selectMetaEspecifica('/metaEspecifica').then(function (data) {
+				$scope.metas = MetaEspecificaService.getMetaEspecifica();
+				resolve();
+			})
+		})
+	}
+
+
+
 	$scope.visualizarBotao = true;
 
 	$scope.targetIndex = -1;
 
 	$scope.clicarNoEditar = function (id) {
 		$scope.targetIndex = id;
-
 	}
 
-	$scope.clicarNoSalvar = function () {
+	$scope.myfilter = function (item) {
+		if (item.id_modelo == 1) {
+			return item;
+		}
+	}
+
+	$scope.clicarNoSalvar = function (id, nome, sigla, descricao, modelo, categoria, nivelMaturidade, meta) {
 		$scope.targetIndex = -1;
+		areaProcesso = {};
+		areaProcesso['id'] = $scope.areaProcessos[id].id;
+		areaProcesso['sigla'] = sigla;
+		areaProcesso['nome'] = nome;
+		areaProcesso['descricao'] = descricao;
+		areaProcesso['id_categoria'] = (categoria == null ? $scope.areaProcessos[id].id_categoria : categoria);
+		areaProcesso['id_modelo'] = (modelo == null ? $scope.areaProcessos[id].id_modelo : medelo);
+		areaProcesso['id_nivelmaturidade'] = (nivelMaturidade == null ? $scope.areaProcessos[id].id_nivelmaturidade : nivelMaturidade);
+		areaProcesso['id_metaespecifica'] = (meta == null ? $scope.areaProcessos[id].id_metaespecifica : meta);
+		console.log(areaProcesso);
+		areaProcessoService.updateAreaProcesso(areaProcesso, '/areaProcesso').then(function () {
+			alert('update concluido com sucesso!');
+		})
 
 	}
+	$scope.clicarNoCancelar = function () {
+		$scope.targetIndex = -1;
+	}
 
-
-}])
+})
